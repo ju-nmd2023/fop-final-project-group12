@@ -6,14 +6,14 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(800, 400); // Increase canvas size
+    createCanvas(800, 600); // Increase canvas size
     // Set the background to the loaded image
     // Draw the image with desired width and height
-    image(backgroundImage1, 0, 0, 400, 400);
+    image(backgroundImage1, 0, 0, 600, 600);
 }
 
 function draw (){
-    image(backgroundImage1, 0, 0, 400, 400);
+    image(backgroundImage1, 0, 0, 600, 600);
 }
 
 ///idqcbkjwnecd
