@@ -89,7 +89,7 @@ function draw (){
 
     noStroke();
     push();
-    translate(10, 360);
+    translate(10, 480);
     for (let y in dataBus) {
       for (let x in dataBus[y]) {
         let pixel = dataBus[y][x];
@@ -109,8 +109,58 @@ function draw (){
       }
     }
     pop();
+
+    push();
+    translate(350, 480);
+    for (let y in dataBus) {
+      for (let x in dataBus[y]) {
+        let pixel = dataBus[y][x];
+        if (pixel === 1) {
+          fill(190,10,20);
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 2) {
+          fill(139,0,0);
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 3) {
+          fill(216,36,41);
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 4) {
+            fill(108,20,19);
+            rect(x * size, y * size, size, size);
+          }
+      }
+    }
+    pop();
+
     push();
     translate(110, 230);
+    for (let y in dataRock) {
+      for (let x in dataRock[y]) {
+        let pixel = dataRock[y][x];
+        if (pixel === 1) {
+          fill("Grey");
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 2) {
+          fill(67,97,117);
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 3) {
+            fill(51,51,51);
+            rect(x * size, y * size, size, size);
+        } 
+        else if (pixel === 4) {
+            fill(194,197,204);
+            rect(x * size, y * size, size, size);
+        } else if (pixel === 5) {
+            fill(93,93,93);
+            rect(x * size, y * size, size, size);
+        } 
+
+      }
+    }
+    pop();
+
+    push();
+    translate(240, 150);
     for (let y in dataRock) {
       for (let x in dataRock[y]) {
         let pixel = dataRock[y][x];
