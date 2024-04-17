@@ -183,50 +183,32 @@ function drawVeronica() {
   pop();
 }
 
+let positionObstacle = {x: 0, y: 480};
+
+
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
   push();
-  translate(10, 480);
+  translate(positionObstacle.x , positionObstacle.y);
+  positionObstacle.x = positionObstacle.x + 5;
   for (let y in dataBus) {
     for (let x in dataBus[y]) {
       let pixel = dataBus[y][x];
       if (pixel === 1) {
-        fill(190, 10, 20);
+        fill(190,10,20);
         rect(x * size, y * size, size, size);
       } else if (pixel === 2) {
-        fill(139, 0, 0);
+        fill(139,0,0);
         rect(x * size, y * size, size, size);
       } else if (pixel === 3) {
-        fill(216, 36, 41);
+        fill(216,36,41);
         rect(x * size, y * size, size, size);
       } else if (pixel === 4) {
-        fill(108, 20, 19);
-        rect(x * size, y * size, size, size);
-      }
-    }
-  }
-  pop();
-
-  push();
-  translate(350, 480);
-  for (let y in dataBus) {
-    for (let x in dataBus[y]) {
-      let pixel = dataBus[y][x];
-      if (pixel === 1) {
-        fill(190, 10, 20);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 2) {
-        fill(139, 0, 0);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 3) {
-        fill(216, 36, 41);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 4) {
-        fill(108, 20, 19);
-        rect(x * size, y * size, size, size);
-      }
+          fill(108,20,19);
+          rect(x * size, y * size, size, size);
+        }
     }
   }
   pop();
