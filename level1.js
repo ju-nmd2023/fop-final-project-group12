@@ -180,11 +180,12 @@ function drawVeronica() {
   pop();
 }
 let positionObstacle = { x: 0, y: 480 };
+let positionBus = {x: 0, y: 480};
 
 function bus() {
   push();
-  translate(positionObstacle.x, positionObstacle.y);
-  positionObstacle.x = positionObstacle.x + 5;
+  translate(positionBus.x, positionBus.y);
+  positionBus.x = positionBus.x + 5;
   for (let y in dataBus) {
     for (let x in dataBus[y]) {
       let pixel = dataBus[y][x];
@@ -304,6 +305,9 @@ function draw() {
 
   noStroke();
   bus();
+  if (positionBus.x > 700){
+    positionBus.x = -150;
+  }
   rock();
   car();
 
