@@ -152,12 +152,55 @@ let dataVeronica = [
   [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0],
 ];
 
+class bus {
+  constructor(position, data, size){
+    this.position = position;
+    this.data = data;
+    this.size = size;
+
+  }
+  
+  display(){
+    push();
+    translate(positionBus.x, positionBus.y);
+    positionBus.x = positionBus.x + 5;
+    for (let y in dataBus) {
+    for (let x in dataBus[y]) {
+      let pixel = dataBus[y][x];
+      if (pixel === 1) {
+        fill(190, 10, 20);
+        rect(x * size, y * size, size, size);
+      } else if (pixel === 2) {
+        fill(139, 0, 0);
+        rect(x * size, y * size, size, size);
+      } else if (pixel === 3) {
+        fill(216, 36, 41);
+        rect(x * size, y * size, size, size);
+      } else if (pixel === 4) {
+        fill(108, 20, 19);
+        rect(x * size, y * size, size, size);
+      }
+    }
+  }
+  if (positionBus.x > 700) {
+    positionBus.x = -150;
+  }
+  pop();
+  }
+}
+
+
+
 let size = 4;
+
+
 let x = -80;
 let y = 450;
 let speedX = 0;
 let speedY = 0;
 let positionBus = { x: 0, y: 480 };
+let busOne = new bus(positionBus, dataBus, size);
+
 
 //functions
 
@@ -183,30 +226,11 @@ function drawVeronica() {
   pop();
 }
 
-function bus() {
-  push();
-  translate(positionBus.x, positionBus.y);
-  positionBus.x = positionBus.x + 5;
-  for (let y in dataBus) {
-    for (let x in dataBus[y]) {
-      let pixel = dataBus[y][x];
-      if (pixel === 1) {
-        fill(190, 10, 20);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 2) {
-        fill(139, 0, 0);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 3) {
-        fill(216, 36, 41);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 4) {
-        fill(108, 20, 19);
-        rect(x * size, y * size, size, size);
-      }
-    }
-  }
-  pop();
-}
+
+
+
+
+
 
 function rock() {
   push();
@@ -305,10 +329,16 @@ function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
-  bus();
-  if (positionBus.x > 700) {
-    positionBus.x = -150;
-  }
+  
+  busOne.display();
+
+  
+  
+  
+  
+  
+  
+  
   rock();
   car();
   drawVeronica();
