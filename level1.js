@@ -308,4 +308,5 @@ function draw() {
   car();
 
   drawVeronica();
+  movement();
 }
