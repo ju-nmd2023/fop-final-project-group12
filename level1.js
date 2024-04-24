@@ -179,6 +179,7 @@ function drawVeronica() {
   }
   pop();
 }
+let positionObstacle = { x: 0, y: 480 };
 
 function bus() {
   push();
@@ -202,6 +203,7 @@ function bus() {
       }
     }
   }
+  pop();
 }
 
 function rock() {
@@ -296,8 +298,6 @@ function movement() {
     speedY = 0;
   }
 }
-
-let positionObstacle = { x: 0, y: 480 };
 
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
