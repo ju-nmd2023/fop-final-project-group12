@@ -7,7 +7,7 @@ function setup() {
   image(backgroundImage1, 0, 0, 600, 600);
 }
 
-///array busses
+//arrays
 
 let dataBus = [
   [
@@ -157,6 +157,9 @@ let x = -80;
 let y = 450;
 let speedX = 0;
 let speedY = 0;
+let positionBus = { x: 0, y: 480 };
+
+//functions
 
 function drawVeronica() {
   noStroke();
@@ -179,8 +182,6 @@ function drawVeronica() {
   }
   pop();
 }
-let positionObstacle = { x: 0, y: 480 };
-let positionBus = {x: 0, y: 480};
 
 function bus() {
   push();
@@ -305,12 +306,11 @@ function draw() {
 
   noStroke();
   bus();
-  if (positionBus.x > 700){
+  if (positionBus.x > 700) {
     positionBus.x = -150;
   }
   rock();
   car();
-
   drawVeronica();
   movement();
 }
