@@ -1,6 +1,5 @@
 backgroundImage1 = loadImage("images/backgroundlevel1.png");
 
-
 function setup() {
   createCanvas(600, 600); // Increase canvas size
   // Set the background to the loaded image
@@ -181,36 +180,31 @@ function drawVeronica() {
   pop();
 }
 
-let positionObstacle = {x: 0, y: 480};
-
-
-function draw() {
-  image(backgroundImage1, 0, 0, 600, 600);
-
-  noStroke();
+function bus() {
   push();
-  translate(positionObstacle.x , positionObstacle.y);
+  translate(positionObstacle.x, positionObstacle.y);
   positionObstacle.x = positionObstacle.x + 5;
   for (let y in dataBus) {
     for (let x in dataBus[y]) {
       let pixel = dataBus[y][x];
       if (pixel === 1) {
-        fill(190,10,20);
+        fill(190, 10, 20);
         rect(x * size, y * size, size, size);
       } else if (pixel === 2) {
-        fill(139,0,0);
+        fill(139, 0, 0);
         rect(x * size, y * size, size, size);
       } else if (pixel === 3) {
-        fill(216,36,41);
+        fill(216, 36, 41);
         rect(x * size, y * size, size, size);
       } else if (pixel === 4) {
-          fill(108,20,19);
-          rect(x * size, y * size, size, size);
-        }
+        fill(108, 20, 19);
+        rect(x * size, y * size, size, size);
+      }
     }
   }
-  pop();
+}
 
+function rock() {
   push();
   translate(110, 230);
   for (let y in dataRock) {
@@ -235,32 +229,9 @@ function draw() {
     }
   }
   pop();
+}
 
-  push();
-  translate(240, 150);
-  for (let y in dataRock) {
-    for (let x in dataRock[y]) {
-      let pixel = dataRock[y][x];
-      if (pixel === 1) {
-        fill("Grey");
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 2) {
-        fill(67, 97, 117);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 3) {
-        fill(51, 51, 51);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 4) {
-        fill(194, 197, 204);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 5) {
-        fill(93, 93, 93);
-        rect(x * size, y * size, size, size);
-      }
-    }
-  }
-  pop();
-
+function car() {
   push();
   translate(350, 50);
   for (let y in dataCar) {
@@ -299,9 +270,9 @@ function draw() {
       }
     }
   }
+}
 
-  drawVeronica();
-
+function movement() {
   x += speedX;
   y += speedY;
 
@@ -326,3 +297,15 @@ function draw() {
   }
 }
 
+let positionObstacle = { x: 0, y: 480 };
+
+function draw() {
+  image(backgroundImage1, 0, 0, 600, 600);
+
+  noStroke();
+  bus();
+  rock();
+  car();
+
+  drawVeronica();
+}
