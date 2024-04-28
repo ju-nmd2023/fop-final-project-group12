@@ -256,9 +256,18 @@ function drawVeronica() {
 
 
 
-function rock() {
-  push();
-  translate(110, 230);
+class platform {
+  constructor(position, data, size){
+    this.position = position;
+    this.data = data;
+    this.size = size;
+    this.direction = 1;
+    this.speed = 5;
+  }
+  display(){
+    push();
+  translate(this.position.x, 230);
+  this.position.x += this.direction * this.speed;
   for (let y in dataRock) {
     for (let x in dataRock[y]) {
       let pixel = dataRock[y][x];
@@ -281,7 +290,18 @@ function rock() {
     }
   }
   pop();
+  if (this.position.x <= 240 || this.position.x >= 460) {
+    this.direction *= -1;
+  }
+  }
+  
 }
+
+let rockPosition = {x: 450, y: 50};
+let rock = new platform(rockPosition, dataRock, size);
+//let dataRockReflected = dataRock.map(row => row.slice().reverse());
+
+
 
 function car() {
   push();
@@ -368,7 +388,7 @@ function draw() {
   
   
   
-  rock();
+  rock.display();
   car();
   drawVeronica();
   movement();
