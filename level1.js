@@ -157,6 +157,7 @@ class obstacle {
     this.position = position;
     this.data = data;
     this.size = size;
+    //speed was added to make sure it could be changed independently for the busses in other lanes
     this.speed = speed;
 
   }
@@ -183,9 +184,16 @@ class obstacle {
       }
     }
   }
-  if (this.position.x > 700) {
+  //creates a loop for the busses, with the speed controlling for the start and end points
+  //a speed less than 0, meaning it will move right to left, makes the bus start at 700 after it reaches -150
+  //and the inverse is true for busses with a speed greater than 0.
+  if (this.speed > 0 && this.position.x > 640) {
     this.position.x = -150;
+  }else if (this.speed < 0 && this.position.x < -140){
+    this.position.x = 700;
+
   }
+
   pop();
   }
 }
@@ -199,11 +207,22 @@ let x = -80;
 let y = 450;
 let speedX = 0;
 let speedY = 0;
+//defines the starting position of each bus
 let positionBus = { x: 0, y: 480 };
-let positionBusTwo = {x: -300, y: 480};
+let positionBusTwo = {x: -350, y: 480};
+let positionBusThree = {x:0, y: 360};
+let positionBusFour = {x: 450, y: 360 };
+
 let busOne = new obstacle(positionBus, dataBus, size, 5);
 let busTwo = new obstacle(positionBusTwo, dataBus, size, 5);
-
+//the following lines of code were adapted courtesy of ChatGPT --> https://chat.openai.com/share/49ffdcc4-c8e7-4a13-acc7-b9d53fbb5ed6
+//map() applies the function to each element in the array (in this case the rows of dataBus), 
+//the row=>row part takes the row argument and returns it unchanged, slice() creates a copy of 
+//the rows, and reverse() reverses it, effectively reflecting the dataBus array 
+let dataBusReflected = dataBus.map(row => row.slice().reverse());
+//using a negative speed makes it so that the busses on top go right to left
+let busThree = new obstacle(positionBusThree, dataBusReflected, size, -7);
+let busFour = new obstacle(positionBusFour, dataBusReflected, size, -7);
 
 
 
@@ -337,6 +356,10 @@ function draw() {
   
   busOne.display();
   busTwo.display();
+  busThree.display();
+  busFour.display();
+  
+  
 
   
   
