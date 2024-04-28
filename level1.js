@@ -152,21 +152,22 @@ let dataVeronica = [
   [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0],
 ];
 
-class bus {
-  constructor(position, data, size){
+class obstacle {
+  constructor(position, data, size, speed){
     this.position = position;
     this.data = data;
     this.size = size;
+    this.speed = speed;
 
   }
   
   display(){
     push();
-    translate(positionBus.x, positionBus.y);
-    positionBus.x = positionBus.x + 5;
-    for (let y in dataBus) {
-    for (let x in dataBus[y]) {
-      let pixel = dataBus[y][x];
+    translate(this.position.x, this.position.y);
+    this.position.x += this.speed;
+    for (let y in this.data) {
+    for (let x in this.data[y]) {
+      let pixel = this.data[y][x];
       if (pixel === 1) {
         fill(190, 10, 20);
         rect(x * size, y * size, size, size);
@@ -182,8 +183,8 @@ class bus {
       }
     }
   }
-  if (positionBus.x > 700) {
-    positionBus.x = -150;
+  if (this.position.x > 700) {
+    this.position.x = -150;
   }
   pop();
   }
@@ -199,7 +200,11 @@ let y = 450;
 let speedX = 0;
 let speedY = 0;
 let positionBus = { x: 0, y: 480 };
-let busOne = new bus(positionBus, dataBus, size);
+let positionBusTwo = {x: -300, y: 480};
+let busOne = new obstacle(positionBus, dataBus, size, 5);
+let busTwo = new obstacle(positionBusTwo, dataBus, size, 5);
+
+
 
 
 //functions
@@ -331,6 +336,7 @@ function draw() {
   noStroke();
   
   busOne.display();
+  busTwo.display();
 
   
   
