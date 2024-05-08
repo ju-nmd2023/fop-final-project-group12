@@ -218,8 +218,6 @@ let dataBusReflected = dataBus.map((row) => row.slice().reverse());
 let busThree = new Obstacle(positionBusThree, dataBusReflected, size, -7);
 let busFour = new Obstacle(positionBusFour, dataBusReflected, size, -7);
 
-//functions
-
 class Character {
   constructor(size) {
     this.size = size;
@@ -299,71 +297,90 @@ let rockPositionTwo = { x: 110, y: 165 };
 let rock = new Platform(rockPosition, dataRock, size, 240, 460);
 let rockTwo = new Platform(rockPositionTwo, dataRock, size, 100, 320);
 
-function car() {
-  push();
-  translate(350, 50);
-  for (let y in dataCar) {
-    for (let x in dataCar[y]) {
-      let pixel = dataCar[y][x];
-      if (pixel === 1) {
-        fill("orange");
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 2) {
-        fill(67, 97, 117);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 3) {
-        fill(134, 71, 38);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 4) {
-        fill(202, 98, 18);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 5) {
-        fill(255, 255, 224);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 6) {
-        fill(180, 217, 239);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 7) {
-        fill(190, 10, 20);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 8) {
-        fill(216, 36, 41);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 9) {
-        fill(261, 191, 119);
-        rect(x * size, y * size, size, size);
-      } else if (pixel === 10) {
-        fill(61, 66, 107);
-        rect(x * size, y * size, size, size);
+class Car {
+  constructor(dataCar, size) {
+    this.dataCar = dataCar;
+    this.size = size;
+  }
+
+  display() {
+    push();
+    translate(350, 50);
+    for (let y in this.dataCar) {
+      for (let x in this.dataCar[y]) {
+        let pixel = this.dataCar[y][x];
+        if (pixel === 1) {
+          fill("orange");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill(67, 97, 117);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill(134, 71, 38);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 4) {
+          fill(202, 98, 18);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 5) {
+          fill(255, 255, 224);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 6) {
+          fill(180, 217, 239);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 7) {
+          fill(190, 10, 20);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 8) {
+          fill(216, 36, 41);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 9) {
+          fill(261, 191, 119);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 10) {
+          fill(61, 66, 107);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
       }
+    }
+    pop();
+  }
+}
+let car = new Car(dataCar, size);
+
+class Movement {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+    this.speedX = 0;
+    this.speedY = 0;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (keyIsDown(39)) {
+      // right arrow
+      this.speedX = 5;
+    } else if (keyIsDown(37)) {
+      // left arrow
+      this.speedX = -5;
+    } else {
+      this.speedX = 0;
+    }
+
+    if (keyIsDown(38)) {
+      // up arrow
+      this.speedY = -5;
+    } else if (keyIsDown(40)) {
+      // down arrow
+      this.speedY = 5;
+    } else {
+      this.speedY = 0;
     }
   }
 }
-
-function movement() {
-  x += speedX;
-  y += speedY;
-
-  if (keyIsDown(39)) {
-    // right arrow
-    speedX = 5;
-  } else if (keyIsDown(37)) {
-    // left arrow
-    speedX = -5;
-  } else {
-    speedX = 0;
-  }
-
-  if (keyIsDown(38)) {
-    // up arrow
-    speedY = -5;
-  } else if (keyIsDown(40)) {
-    // down arrow
-    speedY = 5;
-  } else {
-    speedY = 0;
-  }
-}
+let movement = new Movement();
 
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
@@ -378,7 +395,7 @@ function draw() {
   busThree.display();
   busFour.display();
 
-  car();
+  car.display();
 
-  movement();
+  movement.update();
 }
