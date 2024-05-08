@@ -1,9 +1,7 @@
 backgroundImage1 = loadImage("images/backgroundlevel1.png");
 
 function setup() {
-  createCanvas(600, 600); // Increase canvas size
-  // Set the background to the loaded image
-  // Draw the image with desired width and height
+  createCanvas(600, 600);
   image(backgroundImage1, 0, 0, 600, 600);
 }
 
@@ -197,11 +195,11 @@ class Obstacle {
 }
 
 let size = 4;
-
 let x = -80;
 let y = 450;
 let speedX = 0;
 let speedY = 0;
+
 //defines the starting position of each bus
 let positionBus = { x: 0, y: 480 };
 let positionBusTwo = { x: -350, y: 480 };
@@ -210,6 +208,7 @@ let positionBusFour = { x: 450, y: 360 };
 
 let busOne = new Obstacle(positionBus, dataBus, size, 5);
 let busTwo = new Obstacle(positionBusTwo, dataBus, size, 5);
+
 //the following lines of code were adapted courtesy of ChatGPT --> https://chat.openai.com/share/49ffdcc4-c8e7-4a13-acc7-b9d53fbb5ed6
 //map() applies the function to each element in the array (in this case the rows of dataBus),
 //the row=>row part takes the row argument and returns it unchanged, slice() creates a copy of
@@ -219,28 +218,36 @@ let dataBusReflected = dataBus.map((row) => row.slice().reverse());
 let busThree = new Obstacle(positionBusThree, dataBusReflected, size, -7);
 let busFour = new Obstacle(positionBusFour, dataBusReflected, size, -7);
 
+let positionVeronica = { x: 300, y: 500 };
+let Veronica = new Character();
+
 //functions
 
-function drawVeronica() {
-  noStroke();
-  push();
-  translate(x, y);
-  for (let i in dataVeronica) {
-    for (let j in dataVeronica[i]) {
-      let pixel = dataVeronica[i][j];
-      if (pixel === 1) {
-        fill("black");
-        rect(j * size, i * size, size, size);
-      } else if (pixel === 2) {
-        fill(95, 56, 23);
-        rect(j * size, i * size, size, size);
-      } else if (pixel === 3) {
-        fill(221, 180, 153);
-        rect(j * size, i * size, size, size);
+class Character {
+  constructor(size) {
+    this.size = size;
+  }
+  display() {
+    noStroke();
+    push();
+    translate(x, y);
+    for (let i in dataVeronica) {
+      for (let j in dataVeronica[i]) {
+        let pixel = dataVeronica[i][j];
+        if (pixel === 1) {
+          fill("black");
+          rect(j * this.size, i * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill(95, 56, 23);
+          rect(j * this.size, i * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill(221, 180, 153);
+          rect(j * this.size, i * this.size, this.size, this.size);
+        }
       }
     }
+    pop();
   }
-  pop();
 }
 
 class Platform {
@@ -362,7 +369,7 @@ function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
-
+  Veronica.display();
   busOne.display();
   busTwo.display();
   busThree.display();
@@ -371,6 +378,6 @@ function draw() {
   rock.display();
   rockTwo.display();
   car();
-  drawVeronica();
+
   movement();
 }
