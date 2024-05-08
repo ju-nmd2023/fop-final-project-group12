@@ -1,10 +1,7 @@
-function preload() {
-  // Load the image
-  backgroundImage2 = loadImage("images/background2.png");
-}
+backgroundImage2 = loadImage("images/background2.png");
 
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(600, 600);
   image(backgroundImage2, 0, 0, 600, 600);
 }
 
