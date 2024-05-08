@@ -1,7 +1,4 @@
-
-
-// let size = 4;
-// let veronica = new Character(size);
+//let size = 4;
 
 // let x = 100;
 // let y = 100;
@@ -61,8 +58,11 @@ export default class Character {
     this.y = y;
     this.size = size;
     this.data = data;
+    this.speedX = 0;
+    this.speedY = 0;
   }
-  displayVeronica() {
+
+  display() {
     noStroke();
     push();
     translate(this.x, this.y);
@@ -83,5 +83,31 @@ export default class Character {
     }
     pop();
   }
-}
 
+  movement() {
+    push();
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (keyIsDown(39)) {
+      // right arrow
+      this.speedX = 5;
+    } else if (keyIsDown(37)) {
+      // left arrow
+      this.speedX = -5;
+    } else {
+      this.speedX = 0;
+    }
+
+    if (keyIsDown(38)) {
+      // up arrow
+      this.speedY = -5;
+    } else if (keyIsDown(40)) {
+      // down arrow
+      this.speedY = 5;
+    } else {
+      this.speedY = 0;
+    }
+    pop();
+  }
+}
