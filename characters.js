@@ -62,7 +62,7 @@ export default class Character {
     this.size = size;
     this.data = data;
   }
-  display() {
+  displayVeronica() {
     noStroke();
     push();
     translate(this.x, this.y);

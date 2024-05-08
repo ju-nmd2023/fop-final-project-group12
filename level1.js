@@ -321,7 +321,7 @@ class Car {
 }
 
 let car = new Car(dataCar, size);
-let veronica = new Character(0, 0, size, data.veronica);
+let veronica = new Character(0, 0, size, data.veronica, displayveronica);
 
 function movement() {
   x += speedX;
