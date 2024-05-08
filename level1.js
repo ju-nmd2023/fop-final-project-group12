@@ -369,14 +369,15 @@ function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
+  rock.display();
+  rockTwo.display();
   Veronica.display();
+
   busOne.display();
   busTwo.display();
   busThree.display();
   busFour.display();
 
-  rock.display();
-  rockTwo.display();
   car();
 
   movement();
