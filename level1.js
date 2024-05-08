@@ -347,40 +347,30 @@ class Car {
 }
 let car = new Car(dataCar, size);
 
-class Movement {
-  constructor() {
-    this.x = 0;
-    this.y = 0;
-    this.speedX = 0;
-    this.speedY = 0;
+function movement() {
+  x += speedX;
+  y += speedY;
+
+  if (keyIsDown(39)) {
+    // right arrow
+    speedX = 5;
+  } else if (keyIsDown(37)) {
+    // left arrow
+    speedX = -5;
+  } else {
+    speedX = 0;
   }
 
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (keyIsDown(39)) {
-      // right arrow
-      this.speedX = 5;
-    } else if (keyIsDown(37)) {
-      // left arrow
-      this.speedX = -5;
-    } else {
-      this.speedX = 0;
-    }
-
-    if (keyIsDown(38)) {
-      // up arrow
-      this.speedY = -5;
-    } else if (keyIsDown(40)) {
-      // down arrow
-      this.speedY = 5;
-    } else {
-      this.speedY = 0;
-    }
+  if (keyIsDown(38)) {
+    // up arrow
+    speedY = -5;
+  } else if (keyIsDown(40)) {
+    // down arrow
+    speedY = 5;
+  } else {
+    speedY = 0;
   }
 }
-let movement = new Movement();
 
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
@@ -397,5 +387,5 @@ function draw() {
 
   car.display();
 
-  movement.update();
+  movement();
 }
