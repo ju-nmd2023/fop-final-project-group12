@@ -1,33 +1,12 @@
-let dataVeronica = [
-  [0, 0, 0, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0],
-  [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0],
-  [0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],
-  [0, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 0, 0, 0],
-  [0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 0, 0, 0],
-  [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0],
-];
 
-let size = 4;
-let x = 100;
-let y = 100;
-let speedX = 0;
-let speedY = 0;
 
-let dataNina = [
+// let size = 4;
+// let veronica = new Character(size);
+
+// let x = 100;
+// let y = 100;
+
+/* let dataNina = [
   [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
   [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -72,54 +51,37 @@ function drawNina(x, y) {
     }
   }
   pop();
-}
+} */
 
-function drawVeronica() {
-  noStroke();
-  push();
-  translate(x, y);
-  for (let i in dataVeronica) {
-    for (let j in dataVeronica[i]) {
-      let pixel = dataVeronica[i][j];
-      if (pixel === 1) {
-        fill("black");
-        rect(j * size, i * size, size, size);
-      } else if (pixel === 2) {
-        fill(95, 56, 23);
-        rect(j * size, i * size, size, size);
-      } else if (pixel === 3) {
-        fill(221, 180, 153);
-        rect(j * size, i * size, size, size);
+// let positionVeronica = {x: 30, y: 30};
+
+export default class Character {
+  constructor(x, y, size, data) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.data = data;
+  }
+  display() {
+    noStroke();
+    push();
+    translate(this.x, this.y);
+    for (let i in this.data) {
+      for (let j in this.data[i]) {
+        let pixel = this.data[i][j];
+        if (pixel === 1) {
+          fill("black");
+          rect(j * this.size, i * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill(95, 56, 23);
+          rect(j * this.size, i * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill(221, 180, 153);
+          rect(j * this.size, i * this.size, this.size, this.size);
+        }
       }
     }
-  }
-  pop();
-}
-
-function draw() {
-  background(255);
-  drawVeronica();
-
-  x += speedX;
-  y += speedY;
-
-  if (keyIsDown(39)) {
-    // right arrow
-    speedX = 5;
-  } else if (keyIsDown(37)) {
-    // left arrow
-    speedX = -5;
-  } else {
-    speedX = 0;
-  }
-
-  if (keyIsDown(38)) {
-    // up arrow
-    speedY = -5;
-  } else if (keyIsDown(40)) {
-    // down arrow
-    speedY = 5;
-  } else {
-    speedY = 0;
+    pop();
   }
 }
+

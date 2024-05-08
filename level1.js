@@ -1,11 +1,38 @@
+import Character from "./characters.js";
+import { data } from "./characterData.js";
+
 backgroundImage1 = loadImage("images/backgroundlevel1.png");
 
 function setup() {
   createCanvas(600, 600);
-  image(backgroundImage1, 0, 0, 600, 600);
 }
+window.setup = setup;
 
 //arrays
+
+
+let dataVeronica = [
+  [0, 0, 0, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0],
+  [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
+  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+  [0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0],
+  [0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],
+  [0, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 0],
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+  [0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 0, 0, 0],
+  [0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 0, 0, 0],
+  [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0],
+];
 
 let dataBus = [
   [
@@ -127,29 +154,6 @@ let dataCar = [
   [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2],
 ];
 
-let dataVeronica = [
-  [0, 0, 0, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0],
-  [0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-  [0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0],
-  [0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],
-  [0, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-  [0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 0, 0, 0],
-  [0, 0, 0, 3, 3, 3, 0, 0, 3, 3, 3, 0, 0, 0],
-  [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0],
-];
-
 class Obstacle {
   constructor(position, data, size, speed) {
     this.position = position;
@@ -217,36 +221,6 @@ let dataBusReflected = dataBus.map((row) => row.slice().reverse());
 //using a negative speed makes it so that the busses on top go right to left
 let busThree = new Obstacle(positionBusThree, dataBusReflected, size, -7);
 let busFour = new Obstacle(positionBusFour, dataBusReflected, size, -7);
-
-class Character {
-  constructor(size) {
-    this.size = size;
-  }
-  display() {
-    noStroke();
-    push();
-    translate(x, y);
-    for (let i in dataVeronica) {
-      for (let j in dataVeronica[i]) {
-        let pixel = dataVeronica[i][j];
-        if (pixel === 1) {
-          fill("black");
-          rect(j * this.size, i * this.size, this.size, this.size);
-        } else if (pixel === 2) {
-          fill(95, 56, 23);
-          rect(j * this.size, i * this.size, this.size, this.size);
-        } else if (pixel === 3) {
-          fill(221, 180, 153);
-          rect(j * this.size, i * this.size, this.size, this.size);
-        }
-      }
-    }
-    pop();
-  }
-}
-
-let positionVeronica = { x: 300, y: 500 };
-let Veronica = new Character(size);
 
 class Platform {
   constructor(position, data, size, minX, maxX) {
@@ -345,7 +319,9 @@ class Car {
     pop();
   }
 }
+
 let car = new Car(dataCar, size);
+let veronica = new Character(0, 0, size, dataVeronica);
 
 function movement() {
   x += speedX;
@@ -378,7 +354,7 @@ function draw() {
   noStroke();
   rock.display();
   rockTwo.display();
-  Veronica.display();
+  veronica.display();
 
   busOne.display();
   busTwo.display();
@@ -389,3 +365,4 @@ function draw() {
 
   movement();
 }
+window.draw = draw;
