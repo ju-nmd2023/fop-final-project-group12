@@ -195,7 +195,7 @@ class Obstacle {
 }
 
 let size = 4;
-let x = -80;
+let x = 80;
 let y = 450;
 let speedX = 0;
 let speedY = 0;
@@ -217,9 +217,6 @@ let dataBusReflected = dataBus.map((row) => row.slice().reverse());
 //using a negative speed makes it so that the busses on top go right to left
 let busThree = new Obstacle(positionBusThree, dataBusReflected, size, -7);
 let busFour = new Obstacle(positionBusFour, dataBusReflected, size, -7);
-
-let positionVeronica = { x: 300, y: 500 };
-let Veronica = new Character();
 
 //functions
 
@@ -249,6 +246,9 @@ class Character {
     pop();
   }
 }
+
+let positionVeronica = { x: 300, y: 500 };
+let Veronica = new Character(size);
 
 class Platform {
   constructor(position, data, size, minX, maxX) {
