@@ -52,5 +52,12 @@ function draw() {
   busTwo.display();
   busThree.display();
   busFour.display();
+
+  veronica.collide(busOne);
+  veronica.collide(busTwo);
+  veronica.collide(busThree);
+  veronica.collide(busFour);
+
+  
 }
 window.draw = draw;

@@ -8,6 +8,8 @@
 
 // let positionVeronica = {x: 30, y: 30};
 
+import Obstacle from "./obstacles.js";
+
 export default class Character {
   constructor(x, y, size, data) {
     this.x = x;
@@ -16,6 +18,8 @@ export default class Character {
     this.data = data;
     this.speedX = 0;
     this.speedY = 0;
+    this.startingX = x; 
+    this.startingY = y; 
   }
 
   display() {
@@ -67,4 +71,32 @@ export default class Character {
     }
     pop();
   }
+  collide(obstacle) {
+    // Calculate bounding box coordinates for character
+    let charLeft = this.x;
+    let charRight = this.x + this.size * this.data[0].length;
+    let charTop = this.y;
+    let charBottom = this.y + this.size * this.data.length;
+
+    // Calculate bounding box coordinates for obstacle
+    let obsLeft = obstacle.position.x;
+    let obsRight = obstacle.position.x + this.size * obstacle.data[0].length;
+    let obsTop = obstacle.position.y;
+    let obsBottom = obstacle.position.y + this.size * obstacle.data.length;
+
+    // Check for collision
+    if (
+      charLeft < obsRight &&
+      charRight > obsLeft &&
+      charTop < obsBottom &&
+      charBottom > obsTop
+    ) {
+      // Collision detected, reset character to starting position
+      this.x = 275; // Set starting X position
+      this.y = 510; // Set starting Y position
+    }
+  }
 }
+
+
+
