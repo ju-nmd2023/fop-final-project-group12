@@ -1,12 +1,3 @@
-//let size = 4;
-
-// let x = 100;
-// let y = 100;
-
-// let positionVeronica = {x: 30, y: 30};
-
-import Obstacle from "./obstacles.js";
-
 export default class Character {
   constructor(x, y, size, data) {
     this.x = x;
