@@ -11,10 +11,6 @@ function setup() {
 window.setup = setup;
 
 let size = 4;
-let x = 80;
-let y = 450;
-let speedX = 0;
-let speedY = 0;
 
 //defines the starting position of each bus
 let positionBus = { x: 0, y: 480 };
@@ -40,7 +36,7 @@ let rock = new Platform(rockPosition, data.rock, size, 240, 460);
 let rockTwo = new Platform(rockPositionTwo, data.rock, size, 100, 320);
 
 let car = new Platform(data.car, size);
-let veronica = new Character(0, 0, size, data.veronica);
+let veronica = new Character(275, 510, size, data.veronica);
 
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
