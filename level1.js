@@ -57,7 +57,5 @@ function draw() {
   veronica.collide(busTwo);
   veronica.collide(busThree);
   veronica.collide(busFour);
-
-  
 }
 window.draw = draw;

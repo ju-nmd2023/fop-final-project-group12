@@ -3,9 +3,6 @@
 // let x = 100;
 // let y = 100;
 
-
-
-
 // let positionVeronica = {x: 30, y: 30};
 
 import Obstacle from "./obstacles.js";
@@ -18,14 +15,13 @@ export default class Character {
     this.data = data;
     this.speedX = 0;
     this.speedY = 0;
-    this.startingX = x; 
-    this.startingY = y; 
+    this.startingX = x;
+    this.startingY = y;
   }
 
   display() {
     noStroke();
     push();
-    scale(0.8);
     translate(this.x, this.y);
     for (let i in this.data) {
       for (let j in this.data[i]) {
@@ -42,7 +38,7 @@ export default class Character {
         }
       }
     }
-    
+
     pop();
   }
 
@@ -73,31 +69,29 @@ export default class Character {
     pop();
   }
   collide(obstacle) {
-    // Calculate bounding box coordinates for character
-    let charLeft = this.x;
-    let charRight = this.x + this.size * this.data[0].length;
-    let charTop = this.y;
-    let charBottom = this.y + this.size * this.data.length;
+    //character bounding box
+    let characterLeft = this.x;
+    let characterRight = this.x + this.size * this.data[0].length;
+    let characterTop = this.y;
+    let characterBottom = this.y + this.size * this.data.length;
 
-    // Calculate bounding box coordinates for obstacle
-    let obsLeft = obstacle.position.x;
-    let obsRight = obstacle.position.x + this.size * obstacle.data[0].length;
-    let obsTop = obstacle.position.y;
-    let obsBottom = obstacle.position.y + this.size * obstacle.data.length;
+    //obstacle bounding box
+    let obstacleLeft = obstacle.position.x;
+    let obstacleRight =
+      obstacle.position.x + this.size * obstacle.data[0].length;
+    let obstacleTop = obstacle.position.y;
+    let obstacleBottom = obstacle.position.y + this.size * obstacle.data.length;
 
-    // Check for collision
+    //detect collision
     if (
-      charLeft < obsRight &&
-      charRight > obsLeft &&
-      charTop < obsBottom &&
-      charBottom > obsTop
+      characterLeft < obstacleRight &&
+      characterRight > obstacleLeft &&
+      characterTop < obstacleBottom &&
+      characterBottom > obstacleTop
     ) {
-      // Collision detected, reset character to starting position
-      this.x = 275; // Set starting X position
-      this.y = 510; // Set starting Y position
+      //if collision is detected, the position of the character
+      this.x = 275;
+      this.y = 510;
     }
   }
 }
-
-
-
