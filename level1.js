@@ -41,7 +41,6 @@ let rockTwo = new Platform(rockPositionTwo, data.rock, size, 100, 320);
 
 let car = new Platform(data.car, size);
 let veronica = new Character(0, 0, size, data.veronica);
-let movement = new Movement();
 
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
