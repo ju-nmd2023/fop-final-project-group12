@@ -322,6 +322,7 @@ class Car {
 
 let car = new Car(dataCar, size);
 let veronica = new Character(0, 0, size, data.veronica);
+//let nina = new Character(100,100,size, data.nina);
 
 function movement() {
   x += speedX;
@@ -354,7 +355,8 @@ function draw() {
   noStroke();
   rock.display();
   rockTwo.display();
-  veronica.display();
+  veronica.displayVeronica();
+  //nina.displayNina();
 
   busOne.display();
   busTwo.display();
