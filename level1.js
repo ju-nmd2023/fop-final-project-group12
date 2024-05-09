@@ -1,5 +1,5 @@
 import Character from "./characters.js";
-import { data } from "./characterData.js";
+import { data } from "./arrays.js";
 import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
 

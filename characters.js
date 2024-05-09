@@ -25,6 +25,7 @@ export default class Character {
   display() {
     noStroke();
     push();
+    scale(0.8);
     translate(this.x, this.y);
     for (let i in this.data) {
       for (let j in this.data[i]) {
