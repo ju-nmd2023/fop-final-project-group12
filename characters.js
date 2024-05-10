@@ -1,5 +1,3 @@
-
-
 export default class Character {
   constructor(x, y, size, data) {
     this.x = x;
@@ -8,8 +6,6 @@ export default class Character {
     this.data = data;
     this.speedX = 0;
     this.speedY = 0;
-    this.startingX = x;
-    this.startingY = y;
   }
 
   display() {
