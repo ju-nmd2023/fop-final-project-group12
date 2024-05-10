@@ -8,7 +8,7 @@ let backgroundImage1 = "images/backgroundlevel1.png";
 function setup() {
   createCanvas(600, 600);
   backgroundImage1 = loadImage("images/backgroundlevel1.png");
-  frameRate (30);
+  frameRate(30);
 }
 window.setup = setup;
 
@@ -65,5 +65,6 @@ function draw() {
 
   veronica.collidePlatforms(rock);
   veronica.collidePlatforms(rockTwo);
+  veronica.collidePlatforms(car);
 }
 window.draw = draw;
