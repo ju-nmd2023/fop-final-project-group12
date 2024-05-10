@@ -70,7 +70,8 @@ export default class Character {
     let obstacleRight =
       obstacle.position.x + this.size * obstacle.data[0].length - 20;
     let obstacleTop = obstacle.position.y + 25;
-    let obstacleBottom = obstacle.position.y + this.size * obstacle.data.length - 25;
+    let obstacleBottom =
+      obstacle.position.y + this.size * obstacle.data.length - 25;
 
     //detect collision
     if (
@@ -107,7 +108,7 @@ export default class Character {
       characterBottom > platformTop
     ) {
       //if collision is detected, the position of the character
-      this.x = platform.position.x + 20;
+      this.x = platform.position.x + 10;
     }
   }
 }
