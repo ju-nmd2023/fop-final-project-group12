@@ -82,7 +82,7 @@ export default class Character {
     ) {
       //if collision is detected, the position of the character
       this.x = 275;
-      this.y = 510;
+      this.y = 550;
     }
   }
 
