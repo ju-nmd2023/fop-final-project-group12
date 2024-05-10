@@ -109,7 +109,7 @@ export default class Character {
       characterBottom > platformTop
     ) {
       //if collision is detected, the position of the character
-      this.x = platform.position.x;
+      this.x = platform.position.x + 20;
     }
   }
 }
