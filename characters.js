@@ -14,6 +14,7 @@ export default class Character {
     noStroke();
     push();
     translate(this.x, this.y);
+    scale(0.8);
     for (let i in this.data) {
       for (let j in this.data[i]) {
         let pixel = this.data[i][j];
@@ -82,7 +83,7 @@ export default class Character {
     ) {
       //if collision is detected, the position of the character
       this.x = 275;
-      this.y = 550;
+      this.y = 510;
     }
   }
 
@@ -93,7 +94,7 @@ export default class Character {
     let characterTop = this.y + 50;
     let characterBottom = this.y + this.size * this.data.length;
 
-    //obstacle bounding box
+    //platform bounding box
     let platformLeft = platform.position.x;
     let platformRight =
       platform.position.x + this.size * platform.data[0].length;
