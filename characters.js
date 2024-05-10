@@ -1,3 +1,5 @@
+
+
 export default class Character {
   constructor(x, y, size, data) {
     this.x = x;

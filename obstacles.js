@@ -1,3 +1,5 @@
+
+
 export default class Obstacle {
   constructor(position, data, size, speed) {
     this.position = position;
@@ -6,6 +8,8 @@ export default class Obstacle {
     //speed was added to make sure it could be changed independently for the busses in other lanes
     this.speed = speed;
   }
+
+  
 
   display() {
     push();
@@ -16,16 +20,16 @@ export default class Obstacle {
         let pixel = this.data[y][x];
         if (pixel === 1) {
           fill(190, 10, 20);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 2) {
           fill(139, 0, 0);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 3) {
           fill(216, 36, 41);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 4) {
           fill(108, 20, 19);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         }
       }
     }
@@ -36,8 +40,7 @@ export default class Obstacle {
       this.position.x = -150;
     } else if (this.speed < 0 && this.position.x < -140) {
       this.position.x = 700;
-    }
-
+    } 
     pop();
   }
 }

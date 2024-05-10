@@ -3,14 +3,16 @@ import { data } from "./arrays.js";
 import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
 
-backgroundImage1 = loadImage("images/backgroundlevel1.png");
+let backgroundImage1 = "images/backgroundlevel1.png";
 
 function setup() {
   createCanvas(600, 600);
+  backgroundImage1 = loadImage("images/backgroundlevel1.png");
+  frameRate (30);
 }
 window.setup = setup;
 
-let size = 4;
+const size = 4;
 
 //defines the starting position of each bus
 let positionBus = { x: 0, y: 480 };
