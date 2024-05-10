@@ -85,4 +85,30 @@ export default class Character {
       this.y = 510;
     }
   }
+
+  collidePlatforms(platform) {
+    //character bounding box
+    let characterLeft = this.x;
+    let characterRight = this.x + this.size * this.data[0].length;
+    let characterTop = this.y + 50;
+    let characterBottom = this.y + this.size * this.data.length;
+
+    //obstacle bounding box
+    let platformLeft = platform.position.x;
+    let platformRight =
+      platform.position.x + this.size * platform.data[0].length;
+    let platformTop = platform.position.y;
+    let platformBottom = platform.position.y + this.size * platform.data.length;
+
+    //detect collision
+    if (
+      characterLeft < platformRight &&
+      characterRight > platformLeft &&
+      characterTop < platformBottom &&
+      characterBottom > platformTop
+    ) {
+      //if collision is detected, the position of the character
+      this.x = platform.position.x;
+    }
+  }
 }

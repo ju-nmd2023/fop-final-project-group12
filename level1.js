@@ -35,7 +35,8 @@ let rockPositionTwo = { x: 110, y: 165 };
 let rock = new Platform(rockPosition, data.rock, size, 240, 460);
 let rockTwo = new Platform(rockPositionTwo, data.rock, size, 100, 320);
 
-let car = new Platform(data.car, size);
+let positionCar = { x: 300, y: 100 };
+let car = new Platform(positionCar, data.car, size, 300, 100);
 let veronica = new Character(275, 510, size, data.veronica);
 
 function draw() {
@@ -57,5 +58,8 @@ function draw() {
   veronica.collide(busTwo);
   veronica.collide(busThree);
   veronica.collide(busFour);
+
+  veronica.collidePlatforms(rock);
+  veronica.collidePlatforms(rockTwo);
 }
 window.draw = draw;
