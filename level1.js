@@ -2,6 +2,7 @@ import Character from "./characters.js";
 import { data } from "./arrays.js";
 import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
+import Water from "./water.js";
 
 let backgroundImage1 = "images/backgroundlevel1.png";
 
@@ -42,18 +43,21 @@ let car = new Platform(carPosition, data.car, size, 100, 300);
 
 let veronica = new Character(275, 540, size, data.veronica);
 
+let waterlevelOne = new Water(0, 0, 600, 300);
+
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
+  waterlevelOne.displayWater();
   rock.displayRock();
   rockTwo.displayRock();
   car.displayCar();
 
-  busOne.display();
-  busTwo.display();
-  busThree.display();
-  busFour.display();
+  busOne.displayBus();
+  busTwo.displayBus();
+  busThree.displayBus();
+  busFour.displayBus();
 
   veronica.display();
   veronica.movement();

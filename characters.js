@@ -111,4 +111,38 @@ export default class Character {
       this.x = platform.position.x + 10;
     }
   }
+
+  collideWater(water) {
+    //character bounding box
+    let characterLeft = this.x;
+    let characterRight = this.x + this.size * this.data[0].length;
+    let characterTop = this.y + 50;
+    let characterBottom = this.y + this.size * this.data.length;
+
+    //water bounding box
+    let waterLeft = 0;
+    let waterRight = 600;
+    let waterTop = 0;
+    let waterBottom = 300;
+
+    //detect collision
+    if (
+      characterLeft < waterRight &&
+      characterRight > waterLeft &&
+      characterTop < waterBottom &&
+      characterBottom > waterTop &&
+      !collisionPlatform
+    ) {
+      //if collision is detected, the position of the character
+      this.x = 275;
+      this.y = 540;
+    } else if (
+      characterLeft < waterRight &&
+      characterRight > waterLeft &&
+      characterTop < waterBottom &&
+      characterBottom > waterTop
+    ) {
+      this.x = platform.position.x + 10;
+    }
+  }
 }

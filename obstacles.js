@@ -1,5 +1,3 @@
-
-
 export default class Obstacle {
   constructor(position, data, size, speed) {
     this.position = position;
@@ -8,10 +6,7 @@ export default class Obstacle {
     //speed was added to make sure it could be changed independently for the busses in other lanes
     this.speed = speed;
   }
-
-  
-
-  display() {
+  displayBus() {
     push();
     translate(this.position.x, this.position.y);
     this.position.x += this.speed;
@@ -40,7 +35,7 @@ export default class Obstacle {
       this.position.x = -150;
     } else if (this.speed < 0 && this.position.x < -140) {
       this.position.x = 700;
-    } 
+    }
     pop();
   }
 }
