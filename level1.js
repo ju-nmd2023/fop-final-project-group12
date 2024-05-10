@@ -36,7 +36,7 @@ let rock = new Platform(rockPosition, data.rock, size, 240, 460);
 let rockTwo = new Platform(rockPositionTwo, data.rock, size, 100, 320);
 
 let car = new Platform(data.car, size);
-let veronica = new Character(275, 555, size, data.veronica);
+let veronica = new Character(275, 540, size, data.veronica);
 
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
@@ -44,14 +44,15 @@ function draw() {
   noStroke();
   rock.displayRock();
   rockTwo.displayRock();
-  veronica.display();
-  veronica.movement();
   car.displayCar();
 
   busOne.display();
   busTwo.display();
   busThree.display();
   busFour.display();
+
+  veronica.display();
+  veronica.movement();
 
   veronica.collide(busOne);
   veronica.collide(busTwo);
