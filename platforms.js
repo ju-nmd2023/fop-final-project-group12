@@ -42,12 +42,11 @@ export default class Platform {
   }
 
   displayCar() {
-    {
       push();
-      translate(350, 50);
-      for (let y in this.dataCar) {
-        for (let x in this.dataCar[y]) {
-          let pixel = this.dataCar[y][x];
+      translate(this.position.x, this.position.y);
+      for (let y in this.data) {
+        for (let x in this.data[y]) {
+          let pixel = this.data[y][x];
           if (pixel === 1) {
             fill("orange");
             rect(x * this.size, y * this.size, this.size, this.size);
@@ -84,4 +83,3 @@ export default class Platform {
       pop();
     }
   }
-}

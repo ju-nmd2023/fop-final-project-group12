@@ -66,11 +66,11 @@ export default class Character {
     let characterBottom = this.y + this.size * this.data.length;
 
     //obstacle bounding box
-    let obstacleLeft = obstacle.position.x;
+    let obstacleLeft = obstacle.position.x + 20;
     let obstacleRight =
-      obstacle.position.x + this.size * obstacle.data[0].length;
-    let obstacleTop = obstacle.position.y;
-    let obstacleBottom = obstacle.position.y + this.size * obstacle.data.length;
+      obstacle.position.x + this.size * obstacle.data[0].length - 20;
+    let obstacleTop = obstacle.position.y + 25;
+    let obstacleBottom = obstacle.position.y + this.size * obstacle.data.length - 25;
 
     //detect collision
     if (
