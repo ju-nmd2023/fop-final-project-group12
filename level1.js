@@ -3,9 +3,10 @@ import { data } from "./arrays.js";
 import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
 import Water from "./water.js";
-import drawLevel1 from "./drawlevels.js";
 
 let backgroundImage1 = "images/backgroundlevel1.png";
+let backgroundImage2 = loadImage("images/background2.png");
+let currentLevel = 1;
 
 function setup() {
   createCanvas(600, 600);
@@ -15,6 +16,7 @@ function setup() {
 window.setup = setup;
 
 const size = 4.5;
+
 
 //defines the starting position of each bus
 let positionBus = { x: 0, y: 480 };
@@ -46,7 +48,92 @@ let nina = new Character(275, 540, size, data.nina, 0);
 
 let waterLevelOne = new Water(0, 0, 600, 300);
 
-function draw() {
-  drawLevel1();
+// level two mechanics
+let dataBirdReflected = data.bird.map((row) => row.slice().reverse());
+
+let positionBird = { x: 400, y: 450 };
+let positionBirdTwo = { x: 10, y: 380 };
+let positionBirdThree = { x: 50, y: 300 };
+let birdOne = new Obstacle(positionBird, data.bird, size, 9);
+let birdTwo = new Obstacle(positionBirdTwo, data.bird, size, 9);
+let birdThree = new Obstacle(positionBirdThree, dataBirdReflected, size, -9);
+
+let logPosition = { x: 450, y: 230 };
+let logPositionTwo = { x: 110, y: 165 };
+let logPositionThree = { x: 310, y: 100 };
+let logPositionFour = { x: 250, y: 35 };
+let log = new Platform(logPosition, data.log, size, 240, 460);
+let logTwo = new Platform(logPositionTwo, data.log, size, 100, 320);
+let logThree = new Platform(logPositionThree, data.log, size, 100, 320);
+let logFour = new Platform(logPositionFour, data.log, size, 240, 460);
+
+//speed defined as 2 to make the "wind" effect
+let veronica = new Character(275, 530, size, data.veronica, -2);
+
+
+
+
+function drawLevel1(){
+  image(backgroundImage1, 0, 0, 600, 600);
+
+  noStroke();
+  waterLevelOne.displayWater();
+  rock.displayRock();
+  rockTwo.displayRock();
+  car.displayCar();
+
+  busOne.displayBus();
+  busTwo.displayBus();
+  busThree.displayBus();
+  busFour.displayBus();
+
+  nina.displayNina();
+  nina.movement();
+
+  nina.collide(busOne);
+  nina.collide(busTwo);
+  nina.collide(busThree);
+  nina.collide(busFour);
+
+  nina.collidePlatforms(rock);
+  nina.collidePlatforms(rockTwo);
+  nina.collidePlatforms(car);
 }
+
+function drawLevel2(){
+  image(backgroundImage2, 0, 0, 600, 600);
+
+  birdOne.displayBird();
+  birdTwo.displayBird();
+  birdThree.displayBird();
+  log.displayLog();
+  logTwo.displayLog();
+  logThree.displayLog();
+  logFour.displayStillLog();
+
+  veronica.displayVeronica();
+  veronica.movement();
+
+  veronica.collide(birdOne);
+  veronica.collide(birdTwo);
+
+  veronica.collidePlatforms(log);
+  veronica.collidePlatforms(logTwo);
+  veronica.collidePlatforms(logThree);
+  veronica.collidePlatforms(logFour);
+}
+
+
+
+function draw(){
+  if (currentLevel === 1) {
+    drawLevel1();
+  } else if (currentLevel === 2) {
+    drawLevel2();}
+    if (nina.y < 35 && currentLevel === 1) {
+      currentLevel = 2;
+    }
+}
+
+
 window.draw = draw;

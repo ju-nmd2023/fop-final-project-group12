@@ -45,7 +45,7 @@ function draw() {
   log.displayLog();
   logTwo.displayLog();
   logThree.displayLog();
-  logFour.displayLog();
+  logFour.displayStillLog();
 
   veronica.displayVeronica();
   veronica.movement();
