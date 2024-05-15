@@ -60,6 +60,29 @@ export default class Character {
     pop();
   }
 
+  displayEne() {
+    noStroke();
+    push();
+    scale(0.8);
+    translate(this.x, this.y);
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill(139, 0, 0);
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 2) {
+          fill("black");
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 3) {
+          fill(207, 185, 151);
+          rect(x * size, y * size, size, size);
+        }
+      }
+    }
+    pop();
+  }
+
   movement() {
     push();
     this.x += this.speedX;
