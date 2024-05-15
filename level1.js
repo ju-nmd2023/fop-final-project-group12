@@ -6,6 +6,7 @@ import Water from "./water.js";
 
 let backgroundImage1 = "images/backgroundlevel1.png";
 let backgroundImage2 = loadImage("images/background2.png");
+let backgroundImage3 = loadImage("images/background3.png");
 let currentLevel = 1;
 
 function setup() {
@@ -70,6 +71,15 @@ let logFour = new Platform(logPositionFour, data.log, size, 240, 460);
 //speed defined as 2 to make the "wind" effect
 let veronica = new Character(275, 530, size, data.veronica, -2);
 
+//mechanics level 3
+let tablePosition = { x: 100, y: 220 };
+let table2Position = { x: 400, y: 150 };
+let table = new Platform(tablePosition, data.table, size);
+let table2 = new Platform(table2Position, data.table, size);
+
+
+let ene = new Character(350, 650, size, data.ene);
+
 
 
 
@@ -123,15 +133,27 @@ function drawLevel2(){
   veronica.collidePlatforms(logFour);
 }
 
+function drawLevel3(){
+  image(backgroundImage3, 0, 0, 600, 600);
 
+  table.displayTable();
+  table2.displayTable();
+
+  ene.displayEne();
+  ene.movement();
+}
 
 function draw(){
   if (currentLevel === 1) {
     drawLevel1();
   } else if (currentLevel === 2) {
-    drawLevel2();}
-    if (nina.y < 35 && currentLevel === 1) {
+    drawLevel2();} else if (currentLevel === 3){
+      drawLevel3();
+    }
+    if (nina.y < -20 && currentLevel === 1) {
       currentLevel = 2;
+    } else if (veronica.y < -20 && currentLevel === 2){
+      currentLevel = 3;
     }
 }
 
