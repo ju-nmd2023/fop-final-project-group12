@@ -80,7 +80,7 @@ export default class Character {
       characterTop < obstacleBottom &&
       characterBottom > obstacleTop
     ) {
-      //if collision is detected, the position of the character
+      //if collision is detected, the position of the character is reset
       this.x = 275;
       this.y = 540;
     }
@@ -107,7 +107,7 @@ export default class Character {
       characterTop < platformBottom &&
       characterBottom > platformTop
     ) {
-      //if collision is detected, the position of the character
+      //if collision is detected, the position of the character is reset
       this.x = platform.position.x + 10;
     }
   }
@@ -130,10 +130,9 @@ export default class Character {
       characterLeft < waterRight &&
       characterRight > waterLeft &&
       characterTop < waterBottom &&
-      characterBottom > waterTop &&
-      !collisionPlatform
+      characterBottom > waterTop
     ) {
-      //if collision is detected, the position of the character
+      //if collision is detected, the position of the character is reset
       this.x = 275;
       this.y = 540;
     } else if (
