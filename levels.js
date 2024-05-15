@@ -18,7 +18,6 @@ window.setup = setup;
 
 const size = 4.5;
 
-
 //defines the starting position of each bus
 let positionBus = { x: 0, y: 480 };
 let positionBusTwo = { x: -350, y: 480 };
@@ -77,13 +76,9 @@ let table2Position = { x: 400, y: 150 };
 let table = new Platform(tablePosition, data.table, size);
 let table2 = new Platform(table2Position, data.table, size);
 
-
 let ene = new Character(350, 650, size, data.ene);
 
-
-
-
-function drawLevel1(){
+function drawLevel1() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
@@ -110,7 +105,7 @@ function drawLevel1(){
   nina.collidePlatforms(car);
 }
 
-function drawLevel2(){
+function drawLevel2() {
   image(backgroundImage2, 0, 0, 600, 600);
 
   birdOne.displayBird();
@@ -133,7 +128,7 @@ function drawLevel2(){
   veronica.collidePlatforms(logFour);
 }
 
-function drawLevel3(){
+function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
 
   table.displayTable();
@@ -143,19 +138,19 @@ function drawLevel3(){
   ene.movement();
 }
 
-function draw(){
+function draw() {
   if (currentLevel === 1) {
     drawLevel1();
   } else if (currentLevel === 2) {
-    drawLevel2();} else if (currentLevel === 3){
-      drawLevel3();
-    }
-    if (nina.y < -20 && currentLevel === 1) {
-      currentLevel = 2;
-    } else if (veronica.y < -20 && currentLevel === 2){
-      currentLevel = 3;
-    }
+    drawLevel2();
+  } else if (currentLevel === 3) {
+    drawLevel3();
+  }
+  if (nina.y < -20 && currentLevel === 1) {
+    currentLevel = 2;
+  } else if (veronica.y < -20 && currentLevel === 2) {
+    currentLevel = 3;
+  }
 }
-
 
 window.draw = draw;
