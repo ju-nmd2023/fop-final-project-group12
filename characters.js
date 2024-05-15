@@ -1,9 +1,10 @@
 export default class Character {
-  constructor(x, y, size, data) {
+  constructor(x, y, size, data, speed) {
     this.x = x;
     this.y = y;
     this.size = size;
     this.data = data;
+    this.speed = speed;
     this.speedX = 0;
     this.speedY = 0;
   }
@@ -13,6 +14,7 @@ export default class Character {
     push();
     translate(this.x, this.y);
     scale(0.8);
+    this.x += this.speed;
     for (let i in this.data) {
       for (let j in this.data[i]) {
         let pixel = this.data[i][j];
