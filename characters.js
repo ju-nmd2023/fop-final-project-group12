@@ -43,16 +43,16 @@ export default class Character {
       for (let x in this.data[y]) {
         let pixel = this.data[y][x];
         if (pixel === 1) {
-          fill("black");
+          fill(207, 185, 151);
           rect(x * size, y * size, size, size);
         } else if (pixel === 2) {
-          fill(35, 1, 2);
+          fill(43,29,20);
           rect(x * size, y * size, size, size);
         } else if (pixel === 3) {
-          fill(1, 73, 45);
+          fill(194,197,204);
           rect(x * size, y * size, size, size);
         } else if (pixel === 4) {
-          fill(40, 40, 40);
+          fill(119,129,92);
           rect(x * size, y * size, size, size);
         }
       }
