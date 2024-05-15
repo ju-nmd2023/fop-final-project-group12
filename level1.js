@@ -3,6 +3,7 @@ import { data } from "./arrays.js";
 import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
 import Water from "./water.js";
+import drawLevel1 from "./drawlevels.js";
 
 let backgroundImage1 = "images/backgroundlevel1.png";
 
@@ -45,30 +46,7 @@ let veronica = new Character(275, 540, size, data.veronica, 0);
 
 let waterLevelOne = new Water(0, 0, 600, 300);
 
-function draw() {
-  image(backgroundImage1, 0, 0, 600, 600);
-
-  noStroke();
-  waterLevelOne.displayWater();
-  rock.displayRock();
-  rockTwo.displayRock();
-  car.displayCar();
-
-  busOne.displayBus();
-  busTwo.displayBus();
-  busThree.displayBus();
-  busFour.displayBus();
-
-  veronica.display();
-  veronica.movement();
-
-  veronica.collide(busOne);
-  veronica.collide(busTwo);
-  veronica.collide(busThree);
-  veronica.collide(busFour);
-
-  veronica.collidePlatforms(rock);
-  veronica.collidePlatforms(rockTwo);
-  veronica.collidePlatforms(car);
+function draw(){
+  drawLevel1();
 }
 window.draw = draw;

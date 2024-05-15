@@ -2,6 +2,7 @@ import Character from "./characters.js";
 import { data } from "./arrays.js";
 import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
+import drawLevel2 from "./drawlevels.js";
 
 backgroundImage2 = loadImage("images/background2.png");
 
@@ -41,28 +42,10 @@ let logFour = new Platform(logPositionFour, data.log, size, 240, 460);
 //speed defined as 2 to make the "wind" effect
 let veronica = new Character(275, 530, size, data.veronica, -2);
 
-function draw() {
-  image(backgroundImage2, 0, 0, 600, 600);
 
-  birdOne.displayBird();
-  birdTwo.displayBird();
-  birdThree.displayBird();
-  log.displayLog();
-  logTwo.displayLog();
-  logThree.displayLog();
-  logFour.displayStillLog();
-
-  veronica.display();
-  veronica.movement();
-
-  veronica.collide(birdOne);
-  veronica.collide(birdTwo);
-
-
-  veronica.collidePlatforms(log);
-  veronica.collidePlatforms(logTwo);
-  veronica.collidePlatforms(logThree);
-  veronica.collidePlatforms(logFour);
-
-   
+function draw(){
+  drawLevel2();
 }
+
+window.draw = draw; 
+
