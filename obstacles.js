@@ -1,3 +1,4 @@
+
 export default class Obstacle {
   constructor(position, data, size, speed) {
     this.position = position;
@@ -38,4 +39,35 @@ export default class Obstacle {
     }
     pop();
   }
+  displayBird(){
+    noStroke();
+    push();
+    translate(this.position.x, this.position.y);
+    this.position.x += this.speed;
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill("white");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill("black");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill("orange");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 4) {
+          fill("lightgrey");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+    }
+  }
+  if (this.speed > 0 && this.position.x > 640) {
+    this.position.x = -150;
+  } else if (this.speed < 0 && this.position.x < -140) {
+    this.position.x = 700;
+  }
+  pop();
+  }
+
 }

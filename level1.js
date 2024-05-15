@@ -41,7 +41,7 @@ let rockTwo = new Platform(rockPositionTwo, data.rock, size, 100, 320);
 let carPosition = { x: 250, y: 25 };
 let car = new Platform(carPosition, data.car, size, 100, 300);
 
-let veronica = new Character(275, 540, size, data.veronica);
+let veronica = new Character(275, 540, size, data.veronica, 0);
 
 let waterLevelOne = new Water(0, 0, 600, 300);
 
