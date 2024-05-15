@@ -43,13 +43,13 @@ let car = new Platform(carPosition, data.car, size, 100, 300);
 
 let veronica = new Character(275, 540, size, data.veronica, 0);
 
-let waterlevelOne = new Water(0, 0, 600, 300);
+let waterLevelOne = new Water(0, 0, 600, 300);
 
 function draw() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
-  waterlevelOne.displayWater();
+  waterLevelOne.displayWater();
   rock.displayRock();
   rockTwo.displayRock();
   car.displayCar();
