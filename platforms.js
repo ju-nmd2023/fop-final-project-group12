@@ -104,7 +104,29 @@ for (let y in this.data) {
 if (this.position.x <= this.minX || this.position.x >= this.maxX) {
   this.direction *= -1;
 }
+
 pop(); 
+    }
+    displayStillLog(){
+      push();
+    translate(this.position.x, this.position.y);
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+       if (pixel === 1) {
+          fill(96, 48, 35);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+         fill(126, 82, 57);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill(60, 17, 0);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+  }
+}
+pop();
+
     }
   }
 
