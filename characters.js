@@ -9,7 +9,7 @@ export default class Character {
     this.speedY = 0;
   }
 
-  display() {
+  displayVeronica() {
     noStroke();
     push();
     translate(this.x, this.y);
@@ -31,6 +31,32 @@ export default class Character {
       }
     }
 
+    pop();
+  }
+
+  displayNina() {
+    noStroke();
+    push();
+    translate(this.x, this.y);
+    scale(0.8);
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill("black");
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 2) {
+          fill(35, 1, 2);
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 3) {
+          fill(1, 73, 45);
+          rect(x * size, y * size, size, size);
+        } else if (pixel === 4) {
+          fill(40, 40, 40);
+          rect(x * size, y * size, size, size);
+        }
+      }
+    }
     pop();
   }
 
