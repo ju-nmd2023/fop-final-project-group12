@@ -82,4 +82,22 @@ export default class Platform {
       }
       pop();
     }
+    displayTable(){
+      noStroke();
+      push();
+      translate(this.position.x, this.position.y);
+      for (let y in this.data) {
+        for (let x in this.data[y]) {
+          let pixel = this.data[y][x];
+          if (pixel === 1) {
+            fill("white");
+            rect(x * this.size, y * this.size, this.size, this.size);
+          } else if (pixel === 2) {
+            fill("lightgrey");
+            rect(x * this.size, y * this.size, this.size, this.size);
+          }
+        }
+      }
+      pop();
+    }
   }
