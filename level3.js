@@ -12,8 +12,8 @@ window.setup = setup;
 
 size = 4.5;
 
-let tablePosition = { x: 10, y: 10 };
-let table2Position = {x: 100, y:10};
+let tablePosition = { x: 100, y: 220 };
+let table2Position = {x: 400, y:150};
 let table = new Platform(tablePosition, data.table, size);
 let table2 = new Platform (table2Position, data.table, size);
 
