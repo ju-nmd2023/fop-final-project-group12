@@ -167,13 +167,10 @@ function drawLevel2() {
   const collisionLog3 = veronica.collidePlatforms(logThree);
   const collisionLog4 = veronica.collidePlatforms(logFour);
 
-  if (
-    collideWithWaterTop &&
-    !collisionLog1 &&
-    !collisionLog2 &&
-    !collisionLog3 &&
-    !collisionLog4
-  ) {
+  const collidingWithAnyLog =
+    collisionLog1 || collisionLog2 || collisionLog3 || collisionLog4;
+
+  if (collideWithWaterTop && !collidingWithAnyLog) {
     veronica.y = 530;
   }
 
@@ -223,7 +220,7 @@ function drawLevel3() {
 
 function draw() {
   if (currentLevel === 1) {
-    drawLevel1();
+    drawLevel2();
   } else if (currentLevel === 2) {
     drawLevel2();
   } else if (currentLevel === 3) {

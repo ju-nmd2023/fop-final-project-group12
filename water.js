@@ -5,11 +5,4 @@ export default class Water {
     this.width = width;
     this.height = height;
   }
-
-  displayWater() {
-    push();
-    fill(255, 0, 0, 50);
-    //rect(this.x, this.y, this.width, this.height);
-    pop();
-  }
 }
