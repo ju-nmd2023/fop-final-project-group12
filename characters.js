@@ -165,7 +165,7 @@ export default class Character {
     return false;
   }
 
-  collideWater() {
+  collideWater(water) {
     //character bounding box
     let characterLeft = this.x;
     let characterRight = this.x + this.size * this.data[0].length;
