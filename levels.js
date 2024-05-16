@@ -98,6 +98,8 @@ function drawLevel1() {
   }
 }
 
+//LEVEL 2
+
 //creates the bounding boxes for the water, one at the top, one on the left and one on the right
 let waterLevelTwoTop = new Water(0, 0, 600, 300);
 let waterLevelTwoLeft = new Water(0, 600, 100, 300);
@@ -183,6 +185,8 @@ function drawLevel2() {
     veronica.y = 530;
   }
 }
+
+//LEVEL 3
 
 //let coffee = new Water(0, 0, 600, 300);
 
