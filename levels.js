@@ -4,16 +4,18 @@ import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
 import Water from "./water.js";
 
-//add background images
-let backgroundImage1 = "images/backgroundlevel1.png";
-let backgroundImage2 = loadImage("images/background2.png");
-let backgroundImage3 = loadImage("images/background3.png");
+let backgroundImage1;
+let backgroundImage2;
+let backgroundImage3;
+
 let currentLevel = 1;
 
 function setup() {
   createCanvas(600, 600);
-  backgroundImage1 = loadImage("images/backgroundlevel1.png");
   frameRate(30);
+  backgroundImage1 = loadImage("images/backgroundlevel1.png");
+  backgroundImage2 = loadImage("images/background2.png");
+  backgroundImage3 = loadImage("images/background3.png"); 
 }
 window.setup = setup;
 

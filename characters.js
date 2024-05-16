@@ -44,16 +44,16 @@ export default class Character {
         let pixel = this.data[y][x];
         if (pixel === 1) {
           fill(207, 185, 151);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 2) {
           fill(43, 29, 20);
-          rect(x * size, y * size, size, size);
+          rect(x *this.size, y * this.size, this.size, this.size);
         } else if (pixel === 3) {
           fill(194, 197, 204);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 4) {
           fill(119, 129, 92);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         }
       }
     }
@@ -70,13 +70,13 @@ export default class Character {
         let pixel = this.data[y][x];
         if (pixel === 1) {
           fill(139, 0, 0);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 2) {
           fill("black");
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 3) {
           fill(207, 185, 151);
-          rect(x * size, y * size, size, size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         }
       }
     }
