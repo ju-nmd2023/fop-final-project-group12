@@ -125,7 +125,7 @@ let logPositionThree = { x: 310, y: 100 };
 let logPositionFour = { x: 250, y: 35 };
 
 //create four logs
-let log = new Platform(logPosition, data.log, size, 240, 460);
+let log = new Platform(logPosition, data.log, size, 220, 460);
 let logTwo = new Platform(logPositionTwo, data.log, size, 100, 320);
 let logThree = new Platform(logPositionThree, data.log, size, 100, 320);
 let logFour = new Platform(logPositionFour, data.log, size, 240, 460);
@@ -172,14 +172,11 @@ function drawLevel2() {
 
   if (collideWithWaterTop && !collidingWithAnyLog) {
     veronica.y = 530;
+    veronica.x = 275;
   }
-
-  if (collideWithWaterLeft) {
+  if (veronica.x < 80 || veronica.x > 470) {
     veronica.y = 530;
-  }
-
-  if (collideWithWaterRight) {
-    veronica.y = 530;
+    veronica.x = 275;
   }
 }
 

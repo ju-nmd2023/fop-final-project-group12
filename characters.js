@@ -176,7 +176,7 @@ export default class Character {
     let waterLeft = 0;
     let waterRight = 600;
     let waterTop = 0;
-    let waterBottom = 300;
+    let waterBottom = 200;
 
     //detect collision
     if (
