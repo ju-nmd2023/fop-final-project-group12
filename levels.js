@@ -100,9 +100,15 @@ function drawLevel1() {
   nina.collide(busThree);
   nina.collide(busFour);
 
-  nina.collidePlatforms(rock);
-  nina.collidePlatforms(rockTwo);
-  nina.collidePlatforms(car);
+  const collideWithWater = nina.collideWater(waterLevelOne);
+
+  const collisionRock1 = nina.collidePlatforms(rock);
+  const collisionRock2 = nina.collidePlatforms(rockTwo);
+  const collisionCar = nina.collidePlatforms(car);
+
+  if (collideWithWater && !collisionRock1 && !collisionRock2 && !collisionCar) {
+    nina.y = 530;
+  }
 }
 
 function drawLevel2() {

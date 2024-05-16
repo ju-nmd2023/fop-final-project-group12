@@ -46,13 +46,13 @@ export default class Character {
           fill(207, 185, 151);
           rect(x * size, y * size, size, size);
         } else if (pixel === 2) {
-          fill(43,29,20);
+          fill(43, 29, 20);
           rect(x * size, y * size, size, size);
         } else if (pixel === 3) {
-          fill(194,197,204);
+          fill(194, 197, 204);
           rect(x * size, y * size, size, size);
         } else if (pixel === 4) {
-          fill(119,129,92);
+          fill(119, 129, 92);
           rect(x * size, y * size, size, size);
         }
       }
@@ -160,10 +160,12 @@ export default class Character {
     ) {
       //if collision is detected, the position of the character is reset
       this.x = platform.position.x + 10;
+      return true;
     }
+    return false;
   }
 
-  collideWater(water) {
+  collideWater() {
     //character bounding box
     let characterLeft = this.x;
     let characterRight = this.x + this.size * this.data[0].length;
@@ -184,15 +186,17 @@ export default class Character {
       characterBottom > waterTop
     ) {
       //if collision is detected, the position of the character is reset
-      this.x = 275;
-      this.y = 540;
+      //this.x = 275;
+      //this.y = 540;
+      return true;
     } else if (
       characterLeft < waterRight &&
       characterRight > waterLeft &&
       characterTop < waterBottom &&
       characterBottom > waterTop
     ) {
-      this.x = platform.position.x + 10;
+      //this.x = platform.position.x + 10;
     }
+    return false;
   }
 }

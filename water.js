@@ -9,7 +9,7 @@ export default class Water {
   displayWater() {
     push();
     fill(255, 0, 0, 50);
-    rect(this.x, this.y, this.width, this.height);
+    //rect(this.x, this.y, this.width, this.height);
     pop();
   }
 }
