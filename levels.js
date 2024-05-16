@@ -66,7 +66,6 @@ function drawLevel1() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
-  waterLevelOne.displayWater();
 
   rock.displayRock();
   rockTwo.displayRock();
@@ -119,7 +118,7 @@ let birdTwo = new Obstacle(positionBirdTwo, data.bird, size, 9);
 let birdThree = new Obstacle(positionBirdThree, dataBirdReflected, size, -9);
 
 //degines starting positions for the logs
-let logPosition = { x: 200, y: 230 };
+let logPosition = { x: 200, y: 240 };
 let logPositionTwo = { x: 110, y: 165 };
 let logPositionThree = { x: 310, y: 100 };
 let logPositionFour = { x: 250, y: 35 };
@@ -220,7 +219,7 @@ function drawLevel3() {
 
 function draw() {
   if (currentLevel === 1) {
-    drawLevel2();
+    drawLevel1();
   } else if (currentLevel === 2) {
     drawLevel2();
   } else if (currentLevel === 3) {
