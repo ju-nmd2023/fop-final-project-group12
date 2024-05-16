@@ -119,13 +119,13 @@ let birdTwo = new Obstacle(positionBirdTwo, data.bird, size, 9);
 let birdThree = new Obstacle(positionBirdThree, dataBirdReflected, size, -9);
 
 //degines starting positions for the logs
-let logPosition = { x: 450, y: 230 };
+let logPosition = { x: 200, y: 230 };
 let logPositionTwo = { x: 110, y: 165 };
 let logPositionThree = { x: 310, y: 100 };
 let logPositionFour = { x: 250, y: 35 };
 
 //create four logs
-let log = new Platform(logPosition, data.log, size, 220, 460);
+let log = new Platform(logPosition, data.log, size, 200, 450);
 let logTwo = new Platform(logPositionTwo, data.log, size, 100, 320);
 let logThree = new Platform(logPositionThree, data.log, size, 100, 320);
 let logFour = new Platform(logPositionFour, data.log, size, 240, 460);
@@ -167,10 +167,13 @@ function drawLevel2() {
   const collisionLog3 = veronica.collidePlatforms(logThree);
   const collisionLog4 = veronica.collidePlatforms(logFour);
 
-  const collidingWithAnyLog =
-    collisionLog1 || collisionLog2 || collisionLog3 || collisionLog4;
-
-  if (collideWithWaterTop && !collidingWithAnyLog) {
+  if (
+      collideWithWaterTop &&
+      !collisionLog1 &&
+      !collisionLog2 &&
+      !collisionLog3 &&
+      !collisionLog4
+   ) {
     veronica.y = 530;
     veronica.x = 275;
   }
