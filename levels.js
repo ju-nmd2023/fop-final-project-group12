@@ -15,7 +15,7 @@ function setup() {
   frameRate(30);
   backgroundImage1 = loadImage("images/backgroundlevel1.png");
   backgroundImage2 = loadImage("images/background2.png");
-  backgroundImage3 = loadImage("images/background3.png"); 
+  backgroundImage3 = loadImage("images/background3.png");
 }
 window.setup = setup;
 
@@ -103,8 +103,6 @@ function drawLevel1() {
 
 //creates the bounding boxes for the water, one at the top, one on the left and one on the right
 let waterLevelTwoTop = new Water(0, 0, 600, 300);
-let waterLevelTwoLeft = new Water(0, 600, 100, 300);
-let waterLevelTwoRight = new Water(500, 600, 100, 300);
 
 // level two mechanics
 let dataBirdReflected = data.bird.map((row) => row.slice().reverse());
@@ -160,8 +158,6 @@ function drawLevel2() {
 
   //if colliding with both water and logs, you can keep playing
   const collideWithWaterTop = veronica.collideWater(waterLevelTwoTop);
-  const collideWithWaterRight = veronica.collideWater(waterLevelTwoRight);
-  const collideWithWaterLeft = veronica.collideWater(waterLevelTwoLeft);
 
   const collisionLog1 = veronica.collidePlatforms(log);
   const collisionLog2 = veronica.collidePlatforms(logTwo);
@@ -169,12 +165,12 @@ function drawLevel2() {
   const collisionLog4 = veronica.collidePlatforms(logFour);
 
   if (
-      collideWithWaterTop &&
-      !collisionLog1 &&
-      !collisionLog2 &&
-      !collisionLog3 &&
-      !collisionLog4
-   ) {
+    collideWithWaterTop &&
+    !collisionLog1 &&
+    !collisionLog2 &&
+    !collisionLog3 &&
+    !collisionLog4
+  ) {
     veronica.y = 530;
     veronica.x = 275;
   }
