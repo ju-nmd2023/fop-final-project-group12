@@ -4,9 +4,15 @@ import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
 import Water from "./water.js";
 
+let gameIsRunning = false;
+let gameStart = true;
+let gameIsOver = false;
+
 let backgroundImage1;
 let backgroundImage2;
 let backgroundImage3;
+let startScreenImage;
+let gameOverImage;
 
 let currentLevel = 1;
 
@@ -16,11 +22,46 @@ function setup() {
   backgroundImage1 = loadImage("images/backgroundlevel1.png");
   backgroundImage2 = loadImage("images/background2.png");
   backgroundImage3 = loadImage("images/background3.png");
+  startScreenImage = loadImage("images/startscreen.png");
+  gameOverImage = loadImage("images/gameover.png");
 }
 window.setup = setup;
 
 //set pixel size for all of the arrays
 const size = 4.5;
+
+//START SCREEN
+function startScreen() {
+  gameStart = true;
+  gameIsOver = false;
+  gameIsRunning = false;
+  image(startScreenImage, 0, 0, 600, 600);
+  textSize(18);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  text("press space to start", 300, 330);
+
+  if (keyIsPressed && key === " ") {
+    gameIsRunning = true;
+    gameStart = false;
+  }
+}
+
+//GAME OVER SCREEN
+function gameOver() {
+  gameIsRunning = false;
+  gameIsOver = true;
+  image(gameOverImage, 0, 0, 600, 600);
+  textSize(18);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  text("press space to retry", 300, 400);
+
+  if (keyIsPressed && key === " ") {
+    gameIsRunning = true;
+    gameIsOver = false;
+  }
+}
 
 //LEVEL 1
 
@@ -95,8 +136,7 @@ function drawLevel1() {
   const collisionCar = nina.collidePlatforms(car);
 
   if (collideWithWater && !collisionRock1 && !collisionRock2 && !collisionCar) {
-    nina.y = 530;
-    nina.x = 275;
+    gameOver();
   }
 }
 
@@ -166,12 +206,10 @@ function drawLevel2() {
     !collisionLog3 &&
     !collisionLog4
   ) {
-    veronica.y = 530;
-    veronica.x = 275;
+    gameOver();
   }
   if (veronica.x < 80 || veronica.x > 470) {
-    veronica.y = 530;
-    veronica.x = 275;
+    gameOver();
   }
 }
 
@@ -219,22 +257,30 @@ function drawLevel3() {
     !collisionTable3 &&
     !collisionTable4
   ) {
-    ene.y = 530;
+    gameOver();
   }
 }
 
 function draw() {
-  if (currentLevel === 1) {
-    drawLevel3();
-  } else if (currentLevel === 2) {
-    drawLevel2();
-  } else if (currentLevel === 3) {
-    drawLevel3();
-  }
-  if (nina.y < -20 && currentLevel === 1) {
-    currentLevel = 2;
-  } else if (veronica.y < -20 && currentLevel === 2) {
-    currentLevel = 3;
+  if (gameStart) {
+    startScreen();
+  } else if (gameIsRunning) {
+    gameStart = false;
+    gameIsOver = false;
+    if (currentLevel === 1) {
+      drawLevel1();
+    } else if (currentLevel === 2) {
+      drawLevel2();
+    } else if (currentLevel === 3) {
+      drawLevel3();
+    }
+    if (nina.y < -20 && currentLevel === 1) {
+      currentLevel = 2;
+    } else if (veronica.y < -20 && currentLevel === 2) {
+      currentLevel = 3;
+    }
+  } else if (gameIsOver) {
+    gameOver();
   }
 }
 

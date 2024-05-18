@@ -132,8 +132,7 @@ export default class Character {
       characterBottom > obstacleTop
     ) {
       //if collision is detected, the position of the character is reset
-      this.x = 275;
-      this.y = 540;
+      gameOver();
     }
   }
 
