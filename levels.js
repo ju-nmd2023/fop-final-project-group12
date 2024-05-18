@@ -192,7 +192,7 @@ let table3 = new Platform(table3Position, data.table, size, 100, 350);
 let table4 = new Platform(table4Position, data.table, size, 100, 250);
 
 //create ene character
-let ene = new Character(350, 650, size, data.ene);
+let ene = new Character(275, 530, size, data.ene);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
