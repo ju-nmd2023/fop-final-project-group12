@@ -185,12 +185,12 @@ function drawLevel2() {
 let coffee = new Water(0, 0, 600, 300);
 
 //define starting position for the tables
-let tablePosition = { x: 100, y: 220 };
-let table2Position = { x: 400, y: 150 };
+let tablePosition = { x: 100, y: 240 };
+let table2Position = { x: 300, y: 180 };
 
 //create tables
-let table = new Platform(tablePosition, data.table, size);
-let table2 = new Platform(table2Position, data.table, size);
+let table = new Platform(tablePosition, data.table, size, 100, 300);
+let table2 = new Platform(table2Position, data.table, size, 300, 500);
 
 //create ene character
 let ene = new Character(350, 650, size, data.ene);
@@ -216,7 +216,7 @@ function drawLevel3() {
 
 function draw() {
   if (currentLevel === 1) {
-    drawLevel1();
+    drawLevel3();
   } else if (currentLevel === 2) {
     drawLevel2();
   } else if (currentLevel === 3) {

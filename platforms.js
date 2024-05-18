@@ -86,6 +86,7 @@ export default class Platform {
     noStroke();
     push();
     translate(this.position.x, this.position.y);
+    this.position.x += this.direction * this.speed;
     for (let y in this.data) {
       for (let x in this.data[y]) {
         let pixel = this.data[y][x];
@@ -97,6 +98,10 @@ export default class Platform {
           rect(x * this.size, y * this.size, this.size, this.size);
         }
       }
+    }
+
+    if (this.position.x <= this.minX || this.position.x >= this.maxX) {
+      this.direction *= -1;
     }
     pop();
   }
@@ -126,7 +131,7 @@ export default class Platform {
     }
     pop();
   }
-  displayStillLog(){
+  displayStillLog() {
     push();
     translate(this.position.x, this.position.y);
     for (let y in this.data) {
