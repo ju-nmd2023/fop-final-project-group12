@@ -225,7 +225,7 @@ function drawLevel3() {
 
 function draw() {
   if (currentLevel === 1) {
-    drawLevel2();
+    drawLevel3();
   } else if (currentLevel === 2) {
     drawLevel2();
   } else if (currentLevel === 3) {

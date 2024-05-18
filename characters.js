@@ -47,7 +47,7 @@ export default class Character {
           rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 2) {
           fill(43, 29, 20);
-          rect(x *this.size, y * this.size, this.size, this.size);
+          rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 3) {
           fill(194, 197, 204);
           rect(x * this.size, y * this.size, this.size, this.size);
@@ -63,8 +63,8 @@ export default class Character {
   displayEne() {
     noStroke();
     push();
-    scale(0.8);
     translate(this.x, this.y);
+    scale(0.8);
     for (let y in this.data) {
       for (let x in this.data[y]) {
         let pixel = this.data[y][x];
