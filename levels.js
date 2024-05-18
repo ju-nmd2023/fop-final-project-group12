@@ -193,6 +193,7 @@ let table4 = new Platform(table4Position, data.table, size, 100, 250);
 
 //create ene character
 let ene = new Character(275, 530, size, data.ene);
+let rando1 = new Character (275,530,size,data.rando1);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
@@ -204,6 +205,7 @@ function drawLevel3() {
 
   ene.displayEne();
   ene.movement();
+  rando1.displayRando1();
 
   const collideWithCoffee = ene.collideWater(coffee);
 

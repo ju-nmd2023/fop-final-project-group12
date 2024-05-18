@@ -83,6 +83,36 @@ export default class Character {
     pop();
   }
 
+  displayRando1() {
+    noStroke();
+    push();
+    translate(this.x, this.y);
+    scale(0.8);
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill(139, 0, 0);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill("black");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill(207, 185, 151);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }else if (pixel === 4) {
+          fill("blue");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+        else if (pixel === 5) {
+          fill("beige");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+      }
+    }
+    pop();
+  }
+
   movement() {
     push();
     this.x += this.speedX;
