@@ -15,7 +15,7 @@ function setup() {
   frameRate(30);
   backgroundImage1 = loadImage("images/backgroundlevel1.png");
   backgroundImage2 = loadImage("images/background2.png");
-  backgroundImage3 = loadImage("images/background3.png");
+  backgroundImage3 = loadImage("images/background3.png"); 
 }
 window.setup = setup;
 
@@ -165,12 +165,12 @@ function drawLevel2() {
   const collisionLog4 = veronica.collidePlatforms(logFour);
 
   if (
-    collideWithWaterTop &&
-    !collisionLog1 &&
-    !collisionLog2 &&
-    !collisionLog3 &&
-    !collisionLog4
-  ) {
+      collideWithWaterTop &&
+      !collisionLog1 &&
+      !collisionLog2 &&
+      !collisionLog3 &&
+      !collisionLog4
+   ) {
     veronica.y = 530;
     veronica.x = 275;
   }
