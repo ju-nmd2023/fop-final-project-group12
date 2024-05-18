@@ -96,6 +96,7 @@ function drawLevel1() {
 
   if (collideWithWater && !collisionRock1 && !collisionRock2 && !collisionCar) {
     nina.y = 530;
+    nina.x = 275;
   }
 }
 
