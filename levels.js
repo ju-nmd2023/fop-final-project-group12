@@ -151,12 +151,6 @@ function drawLevel2() {
   veronica.collide(birdOne);
   veronica.collide(birdTwo);
 
-  //collisions with logs
-  veronica.collidePlatforms(log);
-  veronica.collidePlatforms(logTwo);
-  veronica.collidePlatforms(logThree);
-  veronica.collidePlatforms(logFour);
-
   //if colliding with both water and logs, you can keep playing
   const collideWithWaterTop = veronica.collideWater(waterLevelTwoTop);
 
@@ -214,16 +208,24 @@ function drawLevel3() {
   const collideWithCoffee = ene.collideWater(coffee);
 
   const collisionTable1 = ene.collidePlatforms(table);
-  const collisionTable2 = nina.collidePlatforms(table2);
+  const collisionTable2 = ene.collidePlatforms(table2);
+  const collisionTable3 = ene.collidePlatforms(table3);
+  const collisionTable4 = ene.collidePlatforms(table4);
 
-  if (collideWithCoffee && !collisionTable1 && !collisionTable2) {
+  if (
+    collideWithCoffee &&
+    !collisionTable1 &&
+    !collisionTable2 &&
+    !collisionTable3 &&
+    !collisionTable4
+  ) {
     ene.y = 530;
   }
 }
 
 function draw() {
   if (currentLevel === 1) {
-    drawLevel1();
+    drawLevel2();
   } else if (currentLevel === 2) {
     drawLevel2();
   } else if (currentLevel === 3) {
