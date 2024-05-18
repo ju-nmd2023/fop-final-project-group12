@@ -15,7 +15,7 @@ function setup() {
   frameRate(30);
   backgroundImage1 = loadImage("images/backgroundlevel1.png");
   backgroundImage2 = loadImage("images/background2.png");
-  backgroundImage3 = loadImage("images/background3.png"); 
+  backgroundImage3 = loadImage("images/background3.png");
 }
 window.setup = setup;
 
@@ -49,7 +49,7 @@ let rockPosition = { x: 450, y: 230 };
 let rockPositionTwo = { x: 110, y: 165 };
 
 //creates both rocks
-let rock = new Platform(rockPosition, data.rock, size, 240, 460);
+let rock = new Platform(rockPosition, data.rock, size, 240, 460); //the position of every obstacle (rockPosition here) represents the starting position, while the numbers after the size represent the min and max x position.
 let rockTwo = new Platform(rockPositionTwo, data.rock, size, 100, 320);
 
 //defines position for the car
@@ -165,12 +165,12 @@ function drawLevel2() {
   const collisionLog4 = veronica.collidePlatforms(logFour);
 
   if (
-      collideWithWaterTop &&
-      !collisionLog1 &&
-      !collisionLog2 &&
-      !collisionLog3 &&
-      !collisionLog4
-   ) {
+    collideWithWaterTop &&
+    !collisionLog1 &&
+    !collisionLog2 &&
+    !collisionLog3 &&
+    !collisionLog4
+  ) {
     veronica.y = 530;
     veronica.x = 275;
   }
@@ -182,7 +182,7 @@ function drawLevel2() {
 
 //LEVEL 3
 
-//let coffee = new Water(0, 0, 600, 300);
+let coffee = new Water(0, 0, 600, 300);
 
 //define starting position for the tables
 let tablePosition = { x: 100, y: 220 };
@@ -204,15 +204,14 @@ function drawLevel3() {
   ene.displayEne();
   ene.movement();
 
-  /*   const collideWithCoffee = ene.collideWater(coffee);
+  const collideWithCoffee = ene.collideWater(coffee);
 
-  const collisionRock1 = nina.collidePlatforms(rock);
-  const collisionRock2 = nina.collidePlatforms(rockTwo);
-  const collisionCar = nina.collidePlatforms(car);
+  const collisionTable1 = ene.collidePlatforms(table);
+  const collisionTable2 = nina.collidePlatforms(table2);
 
-  if (collideWithWater && !collisionRock1 && !collisionRock2 && !collisionCar) {
-    nina.y = 530;
-  } */
+  if (collideWithCoffee && !collisionTable1 && !collisionTable2) {
+    ene.y = 530;
+  }
 }
 
 function draw() {
