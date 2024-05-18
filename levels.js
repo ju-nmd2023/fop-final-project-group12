@@ -198,7 +198,8 @@ let rando1 = new Character (275,530,size,data.rando1);
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
 
-  table.displayTable();
+  table.update();
+  table.displaySinkingTable();
   table2.displayTable();
   table3.displayTable();
   table4.displayTable();
@@ -213,6 +214,10 @@ function drawLevel3() {
   const collisionTable2 = ene.collidePlatforms(table2);
   const collisionTable3 = ene.collidePlatforms(table3);
   const collisionTable4 = ene.collidePlatforms(table4);
+
+  if (collisionTable1 && !table.sinking){
+    table.sinkingStart();
+  }
 
   if (
     collideWithCoffee &&
