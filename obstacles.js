@@ -1,4 +1,3 @@
-
 export default class Obstacle {
   constructor(position, data, size, speed) {
     this.position = position;
@@ -39,7 +38,7 @@ export default class Obstacle {
     }
     pop();
   }
-  displayBird(){
+  displayBird() {
     noStroke();
     push();
     translate(this.position.x, this.position.y);
@@ -60,14 +59,71 @@ export default class Obstacle {
           fill("lightgrey");
           rect(x * this.size, y * this.size, this.size, this.size);
         }
+      }
     }
-  }
-  if (this.speed > 0 && this.position.x > 640) {
-    this.position.x = -150;
-  } else if (this.speed < 0 && this.position.x < -140) {
-    this.position.x = 700;
-  }
-  pop();
+    if (this.speed > 0 && this.position.x > 640) {
+      this.position.x = -150;
+    } else if (this.speed < 0 && this.position.x < -140) {
+      this.position.x = 700;
+    }
+    pop();
   }
 
+  displayRando1() {
+    noStroke();
+    push();
+    translate(this.x, this.y);
+    scale(0.8);
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill(139, 0, 0);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill("black");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill(207, 185, 151);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 4) {
+          fill("blue");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 5) {
+          fill("beige");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+      }
+    }
+    pop();
+  }
+
+  displayRando2() {
+    noStroke();
+    push();
+    translate(this.x, this.y);
+    scale(0.8);
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill(139, 0, 0);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill("brown");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 3) {
+          fill(207, 185, 151);
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 4) {
+          fill("red");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 5) {
+          fill("green");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+      }
+    }
+    pop();
+  }
 }

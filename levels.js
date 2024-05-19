@@ -231,7 +231,8 @@ let table4 = new Platform(table4Position, data.table, size, 100, 250);
 
 //create ene character
 let ene = new Character(275, 530, size, data.ene);
-let rando1 = new Character (275,530,size,data.rando1);
+let rando1 = new Obstacle(100, 330, size, data.rando);
+let rando2 = new Obstacle(175, 430, size, data.rando);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
@@ -244,7 +245,9 @@ function drawLevel3() {
 
   ene.displayEne();
   ene.movement();
+
   rando1.displayRando1();
+  rando2.displayRando2();
 
   const collideWithCoffee = ene.collideWater(coffee);
 
@@ -253,7 +256,7 @@ function drawLevel3() {
   const collisionTable3 = ene.collidePlatforms(table3);
   const collisionTable4 = ene.collidePlatforms(table4);
 
-  if (collisionTable1 && !table.sinking){
+  if (collisionTable1 && !table.sinking) {
     table.sinkingStart();
   }
 
@@ -275,7 +278,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
