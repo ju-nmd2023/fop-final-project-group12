@@ -33,7 +33,6 @@ window.setup = setup;
 //set pixel size for all of the arrays
 const size = 4.5;
 
-
 //START SCREEN
 function startScreen() {
   gameStart = true;
@@ -48,7 +47,7 @@ function startScreen() {
   if (keyIsPressed && key === " ") {
     gameIsRunning = true;
     gameStart = false;
-    currentLevel = 1; 
+    currentLevel = 1;
     nina = new Character(275, 540, size, data.nina, 0);
   }
 }
@@ -253,8 +252,14 @@ let table4 = new Platform(table4Position, data.table, size, 100, 250);
 
 //create ene character
 let ene = new Character(275, 530, size, data.ene);
-let rando1 = new Obstacle(100, 330, size, data.rando);
-let rando2 = new Obstacle(175, 430, size, data.rando);
+
+//define randos positions
+let rando1Position = { x: 10, y: 340 };
+let rando2Position = { x: 10, y: 480 };
+
+//create two randos
+let rando1 = new Obstacle(rando1Position, data.rando, size, 3);
+let rando2 = new Obstacle(rando2Position, data.rando, size, 3);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
@@ -300,7 +305,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {

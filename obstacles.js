@@ -72,7 +72,8 @@ export default class Obstacle {
   displayRando1() {
     noStroke();
     push();
-    translate(this.x, this.y);
+    translate(this.position.x, this.position.y);
+    this.position.x += this.speed;
     scale(0.8);
     for (let y in this.data) {
       for (let x in this.data[y]) {
@@ -101,7 +102,8 @@ export default class Obstacle {
   displayRando2() {
     noStroke();
     push();
-    translate(this.x, this.y);
+    translate(this.position.x, this.position.y);
+    this.position.x += this.speed;
     scale(0.8);
     for (let y in this.data) {
       for (let x in this.data[y]) {
