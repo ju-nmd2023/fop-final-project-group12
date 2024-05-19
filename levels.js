@@ -61,7 +61,7 @@ function gameOver() {
   textSize(18);
   fill(255);
   textAlign(CENTER, CENTER);
-  text("press space to retry", 300, 400);
+  text("press 'R' to retry", 300, 400);
 
   if (keyIsPressed && key === "r") {
     startScreen();
