@@ -96,6 +96,11 @@ export default class Obstacle {
         }
       }
     }
+    if (this.speed > 0 && this.position.x > 640) {
+      this.position.x = -150;
+    } else if (this.speed < 0 && this.position.x < -140) {
+      this.position.x = 700;
+    }
     pop();
   }
 
@@ -125,6 +130,11 @@ export default class Obstacle {
           rect(x * this.size, y * this.size, this.size, this.size);
         }
       }
+    }
+    if (this.speed > 0 && this.position.x > 640) {
+      this.position.x = -150;
+    } else if (this.speed < 0 && this.position.x < -140) {
+      this.position.x = 700;
     }
     pop();
   }

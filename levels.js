@@ -254,12 +254,23 @@ let table4 = new Platform(table4Position, data.table, size, 100, 250);
 let ene = new Character(275, 530, size, data.ene);
 
 //define randos positions
-let rando1Position = { x: 10, y: 340 };
-let rando2Position = { x: 10, y: 480 };
+let rando1Position = { x: 10, y: 310 };
+let rando2Position = { x: 10, y: 390 };
+let rando3Position = { x: 30, y: 480 };
+let rando4Position = { x: 200, y: 310 };
+let rando5Position = { x: 400, y: 390 };
+let rando6Position = { x: 300, y: 480 };
+
+//reflected randos
+let randoReflected = data.rando.map((row) => row.slice().reverse());
 
 //create two randos
-let rando1 = new Obstacle(rando1Position, data.rando, size, 3);
-let rando2 = new Obstacle(rando2Position, data.rando, size, 3);
+let rando1 = new Obstacle(rando1Position, data.rando, size, -12);
+let rando2 = new Obstacle(rando2Position, data.rando, size, -13);
+let rando3 = new Obstacle(rando3Position, randoReflected, size, 14);
+let rando4 = new Obstacle(rando4Position, data.rando, size, -12);
+let rando5 = new Obstacle(rando5Position, data.rando, size, -13);
+let rando6 = new Obstacle(rando6Position, randoReflected, size, 14);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
@@ -275,6 +286,10 @@ function drawLevel3() {
 
   rando1.displayRando1();
   rando2.displayRando2();
+  rando3.displayRando2();
+  rando4.displayRando1();
+  rando5.displayRando2();
+  rando6.displayRando1();
 
   const collideWithCoffee = ene.collideWater(coffee);
 
@@ -304,14 +319,14 @@ function draw() {
   } else if (gameIsRunning) {
     gameStart = false;
     gameIsOver = false;
-    if (currentLevel === 1) {
-      drawLevel3();
+    if (currentLevel === 1) { 
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
       drawLevel3();
     }
-    if (nina.y < -20 && currentLevel === 1) {
+    if (nina.y < 20 && currentLevel === 1) {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
