@@ -137,10 +137,6 @@ export default class Character {
   }
 
   collidePlatforms(platform) {
-    if (platform.sinking) {
-      return false;
-    }
-
     //character bounding box
     let characterLeft = this.x;
     let characterRight = this.x + this.size * this.data[0].length;

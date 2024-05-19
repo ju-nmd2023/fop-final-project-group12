@@ -33,6 +33,7 @@ window.setup = setup;
 //set pixel size for all of the arrays
 const size = 4.5;
 
+
 //START SCREEN
 function startScreen() {
   gameStart = true;
@@ -47,6 +48,8 @@ function startScreen() {
   if (keyIsPressed && key === " ") {
     gameIsRunning = true;
     gameStart = false;
+    currentLevel = 1; 
+    nina = new Character(275, 540, size, data.nina, 0);
   }
 }
 
@@ -60,8 +63,8 @@ function gameOver() {
   textAlign(CENTER, CENTER);
   text("press space to retry", 300, 400);
 
-  if (keyIsPressed && key === " ") {
-    gameIsRunning = true;
+  if (keyIsPressed && key === "r") {
+    startScreen();
     gameIsOver = false;
   }
 }
