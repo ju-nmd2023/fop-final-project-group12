@@ -7,12 +7,14 @@ import Water from "./water.js";
 let gameIsRunning = false;
 let gameStart = true;
 let gameIsOver = false;
+let gameIsWon = false;
 
 let backgroundImage1;
 let backgroundImage2;
 let backgroundImage3;
 let startScreenImage;
 let gameOverImage;
+let gameWonImage;
 
 let currentLevel = 1;
 
@@ -24,6 +26,7 @@ function setup() {
   backgroundImage3 = loadImage("images/background3.png");
   startScreenImage = loadImage("images/startscreen.png");
   gameOverImage = loadImage("images/gameover.png");
+  gameWonImage = loadImage("images./gamewon.png");
 }
 window.setup = setup;
 
@@ -60,6 +63,22 @@ function gameOver() {
   if (keyIsPressed && key === " ") {
     gameIsRunning = true;
     gameIsOver = false;
+  }
+}
+
+//GAME WON SCREEN
+function gameWon() {
+  gameIsRunning = false;
+  gameIsWon = true;
+  image(gameWonImage, 0, 0, 600, 600);
+  textSize(18);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  text("press space to start again", 300, 400);
+
+  if (keyIsPressed && key === " ") {
+    gameStart = true;
+    gameIsWon = false;
   }
 }
 
@@ -288,6 +307,8 @@ function draw() {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
+    } else if (ene.y < -20 && currentLevel === 3) {
+      gameWon();
     }
   } else if (gameIsOver) {
     gameOver();
