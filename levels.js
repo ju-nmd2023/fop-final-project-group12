@@ -164,7 +164,7 @@ function drawLevel1() {
 
   for (let i = 0; i < lives; i++) {
     textSize(32);
-    fill(149, 26, 46);
+    fill(235, 201, 24);
     text("★", 20 + i * 40, 20);
   }
 
@@ -242,7 +242,7 @@ function drawLevel2() {
 
   for (let i = 0; i < lives; i++) {
     textSize(32);
-    fill(149, 26, 46);
+    fill(235, 201, 24);
     text("★", 20 + i * 40, 20);
   }
 
@@ -325,7 +325,7 @@ function drawLevel3() {
 
   for (let i = 0; i < lives; i++) {
     textSize(32);
-    fill(149, 26, 46);
+    fill(235, 201, 24);
     text("★", 20 + i * 40, 20);
   }
 
