@@ -254,7 +254,7 @@ let rando6 = new Obstacle({ x: 400, y: 370 }, data.rando, size, -14);
 
 //add randos to obstacle array
 randosRight.push(rando1, rando3, rando5);
-randosLeft.push(rando2, rando4, rando6);
+randosLeft.push(rando2, rando4);
 
 //create ene character
 let ene = new Character(275, 530, size, data.ene);
@@ -305,7 +305,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
@@ -316,7 +316,7 @@ function draw() {
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
     } else if (ene.y < -20 && currentLevel === 3) {
-      gameWon();
+      gameIsWon === true;
     }
   } else if (gameIsOver) {
     gameOver();
