@@ -293,7 +293,7 @@ function drawLevel3() {
   );
   const collisionObstacles2 = randosRight.some((obstacle) =>
     ene.collide(obstacle)
-  );
+  ); 
 
   //collision with water and platforms
   const collideWithCoffee = ene.collideWater(coffee);
@@ -303,6 +303,10 @@ function drawLevel3() {
 
   if (collideWithCoffee && !collisionPlatforms) {
     gameOver();
+  }
+
+  if (ene.y < -20) {
+    gameWon();
   }
 }
 
@@ -323,11 +327,11 @@ function draw() {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
-    } else if (ene.y < 50 && currentLevel === 3) {
-      gameWon();
-    }
+    } 
   } else if (gameIsOver) {
     gameOver();
+  } else if (gameIsWon){
+    gameWon();
   }
 }
 
