@@ -18,6 +18,13 @@ let gameWonImage;
 
 let currentLevel = 1;
 
+//redefines start positions for characters so game restart works
+function resetCharacters() {
+  nina = new Character(275, 540, size, data.nina, 0);
+  veronica = new Character(275, 530, size, data.veronica, -2);
+  ene = new Character(275, 530, size, data.ene);
+}
+
 function setup() {
   createCanvas(600, 600);
   frameRate(30);
@@ -48,10 +55,7 @@ function startScreen() {
     gameIsRunning = true;
     gameStart = false;
     currentLevel = 1;
-    //redefines start positions for characters so game restart works
-    nina = new Character(275, 540, size, data.nina, 0);
-    veronica = new Character(275, 530, size, data.veronica, -2);
-    ene = new Character(275, 530, size, data.ene);
+    resetCharacters();
   }
 }
 
@@ -67,7 +71,8 @@ function gameOver() {
 
   if (keyIsPressed && key === "r") {
     gameIsOver = false;
-    startScreen();
+    gameIsRunning = true;
+    resetCharacters();
   }
 }
 
