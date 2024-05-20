@@ -117,16 +117,16 @@ export default class Obstacle {
           fill(139, 0, 0);
           rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 2) {
-          fill("brown");
+          fill(139, 69, 19);
           rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 3) {
-          fill(207, 185, 151);
+          fill("green");
           rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 4) {
-          fill("red");
+          fill("beige");
           rect(x * this.size, y * this.size, this.size, this.size);
         } else if (pixel === 5) {
-          fill("green");
+          fill(210, 180, 140);
           rect(x * this.size, y * this.size, this.size, this.size);
         }
       }
