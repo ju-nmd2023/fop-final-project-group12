@@ -235,15 +235,15 @@ function drawLevel2() {
 //LEVEL 3
 
 //arrays
-let randosRight = [];
+let randosRight = []; 
 let randosLeft = [];
 let platformsLevel3 = [];
 
-let coffee = new Water(0, 0, 600, 300);
+let coffee = new Water(0, 0, 600, 300); 
 
 //reflected randos
 let randoReflected = data.rando.map((row) => row.slice().reverse());
-
+ 
 //create two randos
 let rando1 = new Obstacle({ x: 10, y: 330 }, randoReflected, size, 12);
 let rando2 = new Obstacle({ x: 10, y: 370 }, data.rando, size, -13);
@@ -282,7 +282,7 @@ function drawLevel3() {
   ene.displayEne();
   ene.movement();
   redbull.display();
-  ene.collidePowerup(powerup);
+  ene.collidePowerup(redbull);
 
   // check collisions with randos
   const collisionObstacles = randosLeft.some((obstacle) =>
@@ -296,7 +296,7 @@ function drawLevel3() {
   const collideWithCoffee = ene.collideWater(coffee);
   const collisionPlatforms = platformsLevel3.some((platform) =>
     ene.collidePlatforms(platform)
-  );  
+  ); 
 
   if (collideWithCoffee && !collisionPlatforms) {
     gameOver();
