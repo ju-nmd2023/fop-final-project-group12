@@ -72,6 +72,7 @@ function startScreen() {
     gameStart = false;
     currentLevel = 1;
     resetCharacters();
+    lives = 3;
   }
 }
 
