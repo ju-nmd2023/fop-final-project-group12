@@ -272,9 +272,10 @@ let table = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
 let table2 = new Platform({ x: 300, y: 180 }, data.table, size, 300, 400);
 let table3 = new Platform({ x: 100, y: 120 }, data.table, size, 100, 350);
 let table4 = new Platform({ x: 200, y: 60 }, data.table, size, 100, 250);
+let table5 = new Platform({ x: 200, y: 5 }, data.table, size, 200, 350);
 
 //adds tables to platform array
-platformsLevel3.push(table, table2, table3, table4);
+platformsLevel3.push(table, table2, table3, table4, table5);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
@@ -297,7 +298,7 @@ function drawLevel3() {
   );
   const collisionObstacles2 = randosRight.some((obstacle) =>
     ene.collide(obstacle)
-  );
+  ); 
 
   //collision with water and platforms
   const collideWithCoffee = ene.collideWater(coffee);
@@ -307,6 +308,10 @@ function drawLevel3() {
 
   if (collideWithCoffee && !collisionPlatforms) {
     gameOver();
+  }
+
+  if (ene.y < -20) {
+    gameWon();
   }
 }
 
@@ -327,11 +332,11 @@ function draw() {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
-    } else if (ene.y < 50 && currentLevel === 3) {
-      gameWon();
-    }
+    } 
   } else if (gameIsOver) {
     gameOver();
+  } else if (gameIsWon){
+    gameWon();
   }
 }
 
