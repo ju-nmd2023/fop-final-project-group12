@@ -227,7 +227,8 @@ function drawLevel2() {
 //LEVEL 3
 
 //arrays
-let obstaclesLevel3 = [];
+let randosRight = [];
+let randosLeft = [];
 let platformsLevel3 = [];
 
 let coffee = new Water(0, 0, 600, 300);
@@ -236,15 +237,16 @@ let coffee = new Water(0, 0, 600, 300);
 let randoReflected = data.rando.map((row) => row.slice().reverse());
 
 //create two randos
-let rando1 = new Obstacle({ x: 10, y: 270 }, data.rando, size, -12);
+let rando1 = new Obstacle({ x: 10, y: 300 }, randoReflected, size, 12);
 let rando2 = new Obstacle({ x: 10, y: 350 }, data.rando, size, -13);
 let rando3 = new Obstacle({ x: 30, y: 440 }, randoReflected, size, 14);
-let rando4 = new Obstacle({ x: 200, y: 270 }, data.rando, size, -12);
-let rando5 = new Obstacle({ x: 400, y: 350 }, data.rando, size, -13);
-let rando6 = new Obstacle({ x: 300, y: 440 }, randoReflected, size, 14);
+let rando4 = new Obstacle({ x: 200, y: 300 }, data.rando, size, -12);
+let rando5 = new Obstacle({ x: 300, y: 440 }, randoReflected, size, 13);
+let rando6 = new Obstacle({ x: 400, y: 350 }, data.rando, size, -14);
 
 //add randos to obstacle array
-obstaclesLevel3.push(rando1, rando2, rando3, rando4, rando5, rando6);
+randosRight.push(rando1, rando3, rando5);
+randosLeft.push(rando2, rando4, rando6);
 
 //create ene character
 let ene = new Character(275, 530, size, data.ene);
@@ -264,9 +266,20 @@ function drawLevel3() {
   ene.displayEne();
   ene.movement();
 
-  obstaclesLevel3.forEach((obstacle) => obstacle.displayRando());
+  //display randos and tables. we have 2 display functions for randos because we wanted different colors
+  randosRight.forEach((obstacle) => obstacle.displayRando1());
+  randosLeft.forEach((obstacle) => obstacle.displayRando2());
   platformsLevel3.forEach((platform) => platform.displayTable());
 
+  // check collisions with randos
+  const collisionObstacles = randosLeft.some((obstacle) =>
+    ene.collide(obstacle)
+  );
+  const collisionObstacles2 = randosRight.some((obstacle) =>
+    ene.collide(obstacle)
+  );
+
+  //collision with water and platforms
   const collideWithCoffee = ene.collideWater(coffee);
   const collisionPlatforms = platformsLevel3.some((platform) =>
     ene.collidePlatforms(platform)
