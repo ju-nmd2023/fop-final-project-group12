@@ -154,7 +154,9 @@ function drawLevel1() {
   });
 
   // display buses
-  obstaclesLevel1.forEach((obstacle) => obstacle.displayBus());
+  const collisionObstacles = obstaclesLevel1.forEach((obstacle) =>
+    obstacle.displayBus()
+  );
 
   nina.displayNina();
   nina.movement();
