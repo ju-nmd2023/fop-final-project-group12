@@ -10,8 +10,6 @@ export default class Character {
     this.collisionPowerup = false;
   }
 
- 
-
   displayVeronica() {
     noStroke();
     push();
@@ -86,7 +84,7 @@ export default class Character {
     pop();
   }
 
-  movement() { 
+  movement() {
     push();
 
     if (this.collisionPowerup) {
@@ -116,9 +114,9 @@ export default class Character {
     } else {
       this.speedY = 0;
     }
-    
-  pop();
-}
+
+    pop();
+  }
 
   collide(obstacle) {
     //character bounding box
@@ -219,11 +217,9 @@ export default class Character {
 
     //obstacle bounding box
     let powerupLeft = powerup.position.x;
-    let powerupRight =
-      powerup.position.x + this.size * powerup.data[0].length;
+    let powerupRight = powerup.position.x + this.size * powerup.data[0].length;
     let powerupTop = powerup.position.y;
-    let powerupBottom =
-      powerup.position.y + this.size * powerup.data.length;
+    let powerupBottom = powerup.position.y + this.size * powerup.data.length;
 
     //detect collision
     if (
