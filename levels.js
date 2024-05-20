@@ -109,9 +109,20 @@ function gameWon() {
   }
 }
 
+function livesCounter() {
+  for (let i = 0; i < lives; i++) {
+    textSize(32);
+    fill(235, 201, 24);
+    text("★", 20 + i * 40, 20);
+  }
+}
+
+window.lives = lives;
 window.startScreen = startScreen;
 window.gameWon = gameWon;
 window.gameOver = gameOver;
+window.resetCharacters = resetCharacters;
+
 //LEVEL 1
 
 //arrays
@@ -162,11 +173,7 @@ raindrops = new Raindrop(600, 600);
 function drawLevel1() {
   image(backgroundImage1, 0, 0, 600, 600);
 
-  for (let i = 0; i < lives; i++) {
-    textSize(32);
-    fill(235, 201, 24);
-    text("★", 20 + i * 40, 20);
-  }
+  livesCounter();
 
   noStroke();
 
@@ -240,11 +247,7 @@ let veronica = new Character(275, 530, size, data.veronica, -2);
 function drawLevel2() {
   image(backgroundImage2, 0, 0, 600, 600);
 
-  for (let i = 0; i < lives; i++) {
-    textSize(32);
-    fill(235, 201, 24);
-    text("★", 20 + i * 40, 20);
-  }
+  livesCounter();
 
   obstaclesLevel2.forEach((obstacle) => obstacle.displayBird());
   platformsLevel2.forEach((platform) => platform.displayLog());
@@ -323,11 +326,7 @@ platformsLevel3.push(table, table2, table3, table4, table5);
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
 
-  for (let i = 0; i < lives; i++) {
-    textSize(32);
-    fill(235, 201, 24);
-    text("★", 20 + i * 40, 20);
-  }
+  livesCounter();
 
   //display randos and tables. we have 2 display functions for randos because we wanted different colors
   randosRight.forEach((obstacle) => obstacle.displayRando1());
