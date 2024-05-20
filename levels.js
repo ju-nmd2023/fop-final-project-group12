@@ -236,12 +236,12 @@ let coffee = new Water(0, 0, 600, 300);
 let randoReflected = data.rando.map((row) => row.slice().reverse());
 
 //create two randos
-let rando1 = new Obstacle({ x: 10, y: 310 }, data.rando, size, -12);
-let rando2 = new Obstacle({ x: 10, y: 390 }, data.rando, size, -13);
-let rando3 = new Obstacle({ x: 30, y: 480 }, randoReflected, size, 14);
-let rando4 = new Obstacle({ x: 200, y: 310 }, data.rando, size, -12);
-let rando5 = new Obstacle({ x: 400, y: 390 }, data.rando, size, -13);
-let rando6 = new Obstacle({ x: 300, y: 480 }, randoReflected, size, 14);
+let rando1 = new Obstacle({ x: 10, y: 270 }, data.rando, size, -12);
+let rando2 = new Obstacle({ x: 10, y: 350 }, data.rando, size, -13);
+let rando3 = new Obstacle({ x: 30, y: 440 }, randoReflected, size, 14);
+let rando4 = new Obstacle({ x: 200, y: 270 }, data.rando, size, -12);
+let rando5 = new Obstacle({ x: 400, y: 350 }, data.rando, size, -13);
+let rando6 = new Obstacle({ x: 300, y: 440 }, randoReflected, size, 14);
 
 //add randos to obstacle array
 obstaclesLevel3.push(rando1, rando2, rando3, rando4, rando5, rando6);
