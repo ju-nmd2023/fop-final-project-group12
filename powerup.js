@@ -43,15 +43,12 @@ export default class Powerup {
          for (let x in this.data[y]) {
        let pixel = this.data[y][x];
        if (pixel === 1) {
-         fill(255,255,255);
+         fill("darkgrey");
          rect(x * this.size, y * this.size, this.size, this.size);
        } else if (pixel === 2) {
          fill(50, 82, 123);
          rect(x * this.size, y * this.size, this.size, this.size);
        } else if (pixel === 3) {
-        fill("darkgrey");
-        rect(x * this.size, y * this.size, this.size, this.size);
-      } else if (pixel === 4) {
         fill("yellow");
         rect(x * this.size, y * this.size, this.size, this.size);
       } 

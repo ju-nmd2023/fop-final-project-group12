@@ -17,7 +17,7 @@ let backgroundImage3;
 let startScreenImage;
 let gameOverImage;
 let gameWonImage;
-
+  
 let currentLevel = 1;
 
 let messageTimer = 120;
@@ -312,7 +312,7 @@ function drawLevel3() {
   ene.displayEne();
   ene.movement();
   redbull.display();
-  snus.display();
+  snus.displaySnus();
   ene.collideRedbull(redbull);
   ene.collideSnus(snus);
 
