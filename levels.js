@@ -344,7 +344,7 @@ function drawLevel3() {
     gameOver();
   }
 
-  if (ene.y < -20) {
+  if (ene.y < -50) {
     gameWon();
   }
 }
