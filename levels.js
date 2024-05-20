@@ -50,7 +50,7 @@ function startScreen() {
     currentLevel = 1;
     //redefines start positions for characters so game restart works
     nina = new Character(275, 540, size, data.nina, 0);
-    veronica = new Character(275, 530, size, data.veronica, -2); 
+    veronica = new Character(275, 530, size, data.veronica, -2);
     ene = new Character(275, 530, size, data.ene);
   }
 }
@@ -266,13 +266,13 @@ platformsLevel3.push(table, table2, table3, table4);
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
 
-  ene.displayEne();
-  ene.movement();
-
   //display randos and tables. we have 2 display functions for randos because we wanted different colors
   randosRight.forEach((obstacle) => obstacle.displayRando1());
   randosLeft.forEach((obstacle) => obstacle.displayRando2());
   platformsLevel3.forEach((platform) => platform.displayTable());
+
+  ene.displayEne();
+  ene.movement();
 
   // check collisions with randos
   const collisionObstacles = randosLeft.some((obstacle) =>
