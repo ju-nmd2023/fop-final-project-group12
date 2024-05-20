@@ -54,10 +54,15 @@ function startScreen() {
   gameIsOver = false;
   gameIsRunning = false;
   image(startScreenImage, 0, 0, 600, 600);
+  noStroke();
+  fill(149, 26, 46);
+  rect(200, 375, 200, 50);
   textSize(18);
   fill(0);
   textAlign(CENTER, CENTER);
-  text("press space to start", 300, 330);
+  text("Bring Nína, Veronica and Ene to school so they can code!", 300, 330);
+  fill(255);
+  text("press space to start", 300, 400);
 
   if (keyIsPressed && key === " ") {
     gameIsRunning = true;
@@ -92,9 +97,9 @@ function gameWon() {
   textSize(18);
   fill(0);
   textAlign(CENTER, CENTER);
-  text("press space to start again", 300, 280);
+  text("press 'R' to play again", 300, 280);
 
-  if (keyIsPressed && key === " ") {
+  if (keyIsPressed && key === "r") {
     gameStart = true;
     gameIsWon = false;
   }
