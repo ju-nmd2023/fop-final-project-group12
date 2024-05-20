@@ -48,7 +48,10 @@ function startScreen() {
     gameIsRunning = true;
     gameStart = false;
     currentLevel = 1;
+    //redefines start positions for characters so game restart works
     nina = new Character(275, 540, size, data.nina, 0);
+    veronica = new Character(275, 530, size, data.veronica, -2); 
+    ene = new Character(275, 530, size, data.ene);
   }
 }
 
@@ -297,7 +300,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
