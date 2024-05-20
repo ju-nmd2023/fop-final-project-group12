@@ -4,6 +4,7 @@ import Obstacle from "./obstacles.js";
 import Platform from "./platforms.js";
 import Water from "./water.js";
 import Powerup from "./powerup.js";
+import Raindrop from "./rain.js";
 
 let gameIsRunning = false;
 let gameStart = true;
@@ -19,13 +20,15 @@ let gameWonImage;
 
 let currentLevel = 1;
 
+let raindrops;
+
 //redefines start positions for characters so game restart works
 function resetCharacters() {
   nina = new Character(275, 540, size, data.nina, 0);
   veronica = new Character(275, 530, size, data.veronica, -2);
   ene = new Character(275, 530, size, data.ene);
   redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
-  snus = new Powerup({x: 525, y:550}, data.snus, size);
+  snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 }
 
 function setup() {
@@ -140,6 +143,8 @@ platformsLevel1.push(car);
 //create the character nína
 let nina = new Character(275, 540, size, data.nina, 0);
 
+raindrops = new Raindrop(width, height);
+
 function drawLevel1() {
   image(backgroundImage1, 0, 0, 600, 600);
 
@@ -159,6 +164,9 @@ function drawLevel1() {
 
   nina.displayNina();
   nina.movement();
+
+  raindrops.update();
+  raindrops.display();
 
   // check collisions with buses
   const collisionObstacles = obstaclesLevel1.some((obstacle) =>
@@ -271,7 +279,7 @@ let ene = new Character(275, 530, size, data.ene);
 
 //create redbull
 let redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
-let snus = new Powerup({x: 525, y:550}, data.snus, size);
+let snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 
 //create tables
 let table = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
@@ -332,7 +340,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
