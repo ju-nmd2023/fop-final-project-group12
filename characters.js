@@ -7,7 +7,8 @@ export default class Character {
     this.speed = speed;
     this.speedX = 0;
     this.speedY = 0;
-    this.collisionPowerup = false;
+    this.collisionRedbull = false;
+    this.collisionSnus = false;
   }
 
   displayVeronica() {
@@ -87,9 +88,12 @@ export default class Character {
   movement() {
     push();
 
-    if (this.collisionPowerup) {
+    if (this.collisionRedbull) {
       this.x += this.speedX * 2;
       this.y += this.speedY * 2;
+    } else  if (this.collisionSnus){
+      this.x += this.speedX * 0.5;
+      this.y += this.speedY * 0.5;
     } else {
       this.x += this.speedX;
       this.y += this.speedY;
@@ -208,7 +212,7 @@ export default class Character {
     return false;
   }
 
-  collidePowerup(powerup) {
+  collideRedbull(powerup) {
     //character bounding box
     let characterLeft = this.x;
     let characterRight = this.x + this.size * this.data[0].length;
@@ -229,7 +233,32 @@ export default class Character {
       characterBottom > powerupTop
     ) {
       //if collision is detected, the position of the character is reset
-      this.collisionPowerup = true;
+      this.collisionRedbull = true;
+      powerup.isVisible = false;
+    }
+  }
+  collideSnus(powerup) {
+    //character bounding box
+    let characterLeft = this.x;
+    let characterRight = this.x + this.size * this.data[0].length;
+    let characterTop = this.y;
+    let characterBottom = this.y + this.size * this.data.length;
+
+    //obstacle bounding box
+    let powerupLeft = powerup.position.x;
+    let powerupRight = powerup.position.x + this.size * powerup.data[0].length;
+    let powerupTop = powerup.position.y;
+    let powerupBottom = powerup.position.y + this.size * powerup.data.length;
+
+    //detect collision
+    if (
+      characterLeft < powerupRight &&
+      characterRight > powerupLeft &&
+      characterTop < powerupBottom &&
+      characterBottom > powerupTop
+    ) {
+      //if collision is detected, the position of the character is reset
+      this.collisionSnus = true;
       powerup.isVisible = false;
     }
   }

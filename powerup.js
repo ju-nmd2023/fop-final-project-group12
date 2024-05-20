@@ -26,4 +26,25 @@ export default class Powerup {
       } 
       pop();
         }
-      }}
+
+      }
+    displaySnus(){
+      if(this.isVisible){
+        push();
+     translate(this.position.x, this.position.y);
+     for (let y in this.data) {
+         for (let x in this.data[y]) {
+       let pixel = this.data[y][x];
+       if (pixel === 1) {
+         fill(255,255,255);
+         rect(x * this.size, y * this.size, this.size, this.size);
+       } else if (pixel === 2) {
+         fill(50, 82, 123);
+         rect(x * this.size, y * this.size, this.size, this.size);
+       }
+     }
+   } 
+   pop();
+     }
+
+    }}
