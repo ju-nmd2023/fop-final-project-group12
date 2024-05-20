@@ -154,15 +154,15 @@ function drawLevel1() {
   });
 
   // display buses
-  const collisionObstacles = obstaclesLevel1.forEach((obstacle) =>
-    obstacle.displayBus()
-  );
+  obstaclesLevel1.forEach((obstacle) => obstacle.displayBus());
 
   nina.displayNina();
   nina.movement();
 
   // check collisions with buses
-  obstaclesLevel1.some((obstacle) => nina.collide(obstacle));
+  const collisionObstacles = obstaclesLevel1.some((obstacle) =>
+    nina.collide(obstacle)
+  );
 
   // check collisions with water and platforms
   const collideWithWater = nina.collideWater(waterLevel1);
