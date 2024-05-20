@@ -86,82 +86,88 @@ function gameWon() {
 
 //LEVEL 1
 
-//defines the starting position of each bus
-let positionBus = { x: 0, y: 480 };
-let positionBusTwo = { x: -350, y: 480 };
-let positionBusThree = { x: 0, y: 360 };
-let positionBusFour = { x: 450, y: 360 };
+//arrays
+let obstaclesLevel1 = [];
+let platformsLevel1 = [];
+let waterLevel1 = new Water(0, 0, 600, 300);
 
 //creates all four buses. two are in one direction, the other two are reflected.
-let busOne = new Obstacle(positionBus, data.bus, size, 3);
-let busTwo = new Obstacle(positionBusTwo, data.bus, size, 3);
+let busOne = new Obstacle({ x: 0, y: 480 }, data.bus, size, 3);
+let busTwo = new Obstacle({ x: -350, y: 480 }, data.bus, size, 3);
+let busThree = new Obstacle(
+  { x: 0, y: 360 },
+  data.bus.map((row) => row.slice().reverse()),
+  size,
+  -5
+);
+let busFour = new Obstacle(
+  { x: 450, y: 360 },
+  data.bus.map((row) => row.slice().reverse()),
+  size,
+  -5
+);
 
-/* the following lines of code were adapted courtesy of ChatGPT --> https://chat.openai.com/share/49ffdcc4-c8e7-4a13-acc7-b9d53fbb5ed6
+/* the lines of code for reflecting the array of the buses were adapted courtesy of ChatGPT --> https://chat.openai.com/share/49ffdcc4-c8e7-4a13-acc7-b9d53fbb5ed6
 map() applies the function to each element in the array (in this case the rows of dataBus),
 the row=>row part takes the row argument and returns it unchanged, slice() creates a copy of
 the rows, and reverse() reverses it, effectively reflecting the dataBus array */
-let dataBusReflected = data.bus.map((row) => row.slice().reverse());
 
-//using a negative speed makes it so that the busses on top go right to left
-let busThree = new Obstacle(positionBusThree, dataBusReflected, size, -5);
-let busFour = new Obstacle(positionBusFour, dataBusReflected, size, -5);
-
-//defines the starting position of each rock
-let rockPosition = { x: 450, y: 230 };
-let rockPositionTwo = { x: 110, y: 165 };
+//add buses to obstacle array
+obstaclesLevel1.push(busOne, busTwo, busThree, busFour);
 
 //creates both rocks
-let rock = new Platform(rockPosition, data.rock, size, 240, 460); //the position of every obstacle (rockPosition here) represents the starting position, while the numbers after the size represent the min and max x position.
-let rockTwo = new Platform(rockPositionTwo, data.rock, size, 100, 320);
-
-//defines position for the car
-let carPosition = { x: 250, y: 25 };
+let rock = new Platform({ x: 450, y: 230 }, data.rock, size, 240, 460);
+let rockTwo = new Platform({ x: 110, y: 165 }, data.rock, size, 100, 320);
+//add rocks to platform array
+platformsLevel1.push(rock, rockTwo);
 
 //creates the car
-let car = new Platform(carPosition, data.car, size, 100, 300);
+let car = new Platform({ x: 250, y: 25 }, data.car, size, 100, 300);
+// add car to platform array
+platformsLevel1.push(car);
 
 //create the character nína
 let nina = new Character(275, 540, size, data.nina, 0);
-
-//creates the bounding box for water at the top
-let waterLevelOne = new Water(0, 0, 600, 300);
 
 function drawLevel1() {
   image(backgroundImage1, 0, 0, 600, 600);
 
   noStroke();
 
-  rock.displayRock();
-  rockTwo.displayRock();
+  // display rocks and car
+  platformsLevel1.forEach((platform) => {
+    if (platform === car) {
+      platform.displayCar();
+    } else {
+      platform.displayRock();
+    }
+  });
 
-  car.displayCar();
-
-  busOne.displayBus();
-  busTwo.displayBus();
-  busThree.displayBus();
-  busFour.displayBus();
+  // display buses
+  obstaclesLevel1.forEach((obstacle) => obstacle.displayBus());
 
   nina.displayNina();
   nina.movement();
 
-  nina.collide(busOne);
-  nina.collide(busTwo);
-  nina.collide(busThree);
-  nina.collide(busFour);
+  // check collisions with buses
+  obstaclesLevel1.some((obstacle) => nina.collide(obstacle));
 
-  //if colliding with both water and rocks, you keep going
-  const collideWithWater = nina.collideWater(waterLevelOne);
+  // check collisions with water and platforms
+  const collideWithWater = nina.collideWater(waterLevel1);
+  const collisionPlatforms = platformsLevel1.some((platform) =>
+    nina.collidePlatforms(platform)
+  );
 
-  const collisionRock1 = nina.collidePlatforms(rock);
-  const collisionRock2 = nina.collidePlatforms(rockTwo);
-  const collisionCar = nina.collidePlatforms(car);
-
-  if (collideWithWater && !collisionRock1 && !collisionRock2 && !collisionCar) {
+  if (collideWithWater && !collisionPlatforms) {
     gameOver();
   }
 }
 
 //LEVEL 2
+
+//arrays
+let obstaclesLevel2 = [];
+let platformsLevel2 = [];
 
 //creates the bounding boxes for the water, one at the top, one on the left and one on the right
 let waterLevelTwoTop = new Water(0, 0, 600, 300);
@@ -169,27 +175,22 @@ let waterLevelTwoTop = new Water(0, 0, 600, 300);
 // level two mechanics
 let dataBirdReflected = data.bird.map((row) => row.slice().reverse());
 
-//defines starting positions for the birds
-let positionBird = { x: 400, y: 450 };
-let positionBirdTwo = { x: 10, y: 380 };
-let positionBirdThree = { x: 50, y: 300 };
-
 //creates three birds
-let birdOne = new Obstacle(positionBird, data.bird, size, 9);
-let birdTwo = new Obstacle(positionBirdTwo, data.bird, size, 9);
-let birdThree = new Obstacle(positionBirdThree, dataBirdReflected, size, -9);
+let birdOne = new Obstacle({ x: 400, y: 450 }, data.bird, size, 9);
+let birdTwo = new Obstacle({ x: 10, y: 380 }, data.bird, size, 9);
+let birdThree = new Obstacle({ x: 50, y: 300 }, dataBirdReflected, size, -9);
 
-//degines starting positions for the logs
-let logPosition = { x: 200, y: 240 };
-let logPositionTwo = { x: 110, y: 165 };
-let logPositionThree = { x: 310, y: 100 };
-let logPositionFour = { x: 250, y: 35 };
+//adds birds to obstacle array
+obstaclesLevel2.push(birdOne, birdTwo, birdThree);
 
 //create four logs
-let log = new Platform(logPosition, data.log, size, 200, 450);
-let logTwo = new Platform(logPositionTwo, data.log, size, 100, 320);
-let logThree = new Platform(logPositionThree, data.log, size, 100, 320);
-let logFour = new Platform(logPositionFour, data.log, size, 240, 460);
+let log = new Platform({ x: 200, y: 240 }, data.log, size, 200, 450);
+let logTwo = new Platform({ x: 110, y: 165 }, data.log, size, 100, 320);
+let logThree = new Platform({ x: 310, y: 100 }, data.log, size, 100, 320);
+let logFour = new Platform({ x: 250, y: 35 }, data.log, size, 240, 460);
+
+//adds logs to platform array
+platformsLevel2.push(log, logTwo, logThree, logFour);
 
 //create veronica character. speed defined as -2 to make the "wind" effect
 let veronica = new Character(275, 530, size, data.veronica, -2);
@@ -197,36 +198,25 @@ let veronica = new Character(275, 530, size, data.veronica, -2);
 function drawLevel2() {
   image(backgroundImage2, 0, 0, 600, 600);
 
-  birdOne.displayBird();
-  birdTwo.displayBird();
-  birdThree.displayBird();
-  log.displayLog();
-  logTwo.displayLog();
-  logThree.displayLog();
+  obstaclesLevel2.forEach((obstacle) => obstacle.displayBird());
+  platformsLevel2.forEach((platform) => platform.displayLog());
   logFour.displayStillLog(); //created a separate display function for one of the logs not to move
 
   veronica.displayVeronica();
   veronica.movement();
 
-  //collisions with birds
-  veronica.collide(birdOne);
-  veronica.collide(birdTwo);
+  // check collisions with birds
+  const collisionObstacles = obstaclesLevel2.some((obstacle) =>
+    veronica.collide(obstacle)
+  );
 
   //if colliding with both water and logs, you can keep playing
   const collideWithWaterTop = veronica.collideWater(waterLevelTwoTop);
+  const collisionPlatforms = platformsLevel2.some((platform) =>
+    veronica.collidePlatforms(platform)
+  );
 
-  const collisionLog1 = veronica.collidePlatforms(log);
-  const collisionLog2 = veronica.collidePlatforms(logTwo);
-  const collisionLog3 = veronica.collidePlatforms(logThree);
-  const collisionLog4 = veronica.collidePlatforms(logFour);
-
-  if (
-    collideWithWaterTop &&
-    !collisionLog1 &&
-    !collisionLog2 &&
-    !collisionLog3 &&
-    !collisionLog4
-  ) {
+  if ((collideWithWaterTop && !collisionPlatforms) || collisionObstacles) {
     gameOver();
   }
   if (veronica.x < 80 || veronica.x > 470) {
@@ -236,79 +226,53 @@ function drawLevel2() {
 
 //LEVEL 3
 
+//arrays
+let obstaclesLevel3 = [];
+let platformsLevel3 = [];
+
 let coffee = new Water(0, 0, 600, 300);
-
-//define starting position for the tables
-let tablePosition = { x: 200, y: 240 };
-let table2Position = { x: 300, y: 180 };
-let table3Position = { x: 100, y: 120 };
-let table4Position = { x: 200, y: 60 };
-
-//create tables
-let table = new Platform(tablePosition, data.table, size, 200, 400);
-let table2 = new Platform(table2Position, data.table, size, 300, 400);
-let table3 = new Platform(table3Position, data.table, size, 100, 350);
-let table4 = new Platform(table4Position, data.table, size, 100, 250);
-
-//create ene character
-let ene = new Character(275, 530, size, data.ene);
-
-//define randos positions
-let rando1Position = { x: 10, y: 270 };
-let rando2Position = { x: 10, y: 350 };
-let rando3Position = { x: 30, y: 440 };
-let rando4Position = { x: 200, y: 270 };
-let rando5Position = { x: 400, y: 350 };
-let rando6Position = { x: 300, y: 440 };
 
 //reflected randos
 let randoReflected = data.rando.map((row) => row.slice().reverse());
 
 //create two randos
-let rando1 = new Obstacle(rando1Position, data.rando, size, -12);
-let rando2 = new Obstacle(rando2Position, data.rando, size, -13);
-let rando3 = new Obstacle(rando3Position, randoReflected, size, 14);
-let rando4 = new Obstacle(rando4Position, data.rando, size, -12);
-let rando5 = new Obstacle(rando5Position, data.rando, size, -13);
-let rando6 = new Obstacle(rando6Position, randoReflected, size, 14);
+let rando1 = new Obstacle({ x: 10, y: 310 }, data.rando, size, -12);
+let rando2 = new Obstacle({ x: 10, y: 390 }, data.rando, size, -13);
+let rando3 = new Obstacle({ x: 30, y: 480 }, randoReflected, size, 14);
+let rando4 = new Obstacle({ x: 200, y: 310 }, data.rando, size, -12);
+let rando5 = new Obstacle({ x: 400, y: 390 }, data.rando, size, -13);
+let rando6 = new Obstacle({ x: 300, y: 480 }, randoReflected, size, 14);
+
+//add randos to obstacle array
+obstaclesLevel3.push(rando1, rando2, rando3, rando4, rando5, rando6);
+
+//create ene character
+let ene = new Character(275, 530, size, data.ene);
+
+//create tables
+let table = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
+let table2 = new Platform({ x: 300, y: 180 }, data.table, size, 300, 400);
+let table3 = new Platform({ x: 100, y: 120 }, data.table, size, 100, 350);
+let table4 = new Platform({ x: 200, y: 60 }, data.table, size, 100, 250);
+
+//adds tables to platform array
+platformsLevel3.push(table, table2, table3, table4);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
 
-  table.update();
-  table.displaySinkingTable();
-  table2.displayTable();
-  table3.displayTable();
-  table4.displayTable();
-
   ene.displayEne();
   ene.movement();
 
-  rando1.displayRando1();
-  rando2.displayRando2();
-  rando3.displayRando2();
-  rando4.displayRando1();
-  rando5.displayRando2();
-  rando6.displayRando1();
+  obstaclesLevel3.forEach((obstacle) => obstacle.displayRando());
+  platformsLevel3.forEach((platform) => platform.displayTable());
 
   const collideWithCoffee = ene.collideWater(coffee);
+  const collisionPlatforms = platformsLevel3.some((platform) =>
+    ene.collidePlatforms(platform)
+  );
 
-  const collisionTable1 = ene.collidePlatforms(table);
-  const collisionTable2 = ene.collidePlatforms(table2);
-  const collisionTable3 = ene.collidePlatforms(table3);
-  const collisionTable4 = ene.collidePlatforms(table4);
-
-  if (collisionTable1 && !table.sinking) {
-    table.sinkingStart();
-  }
-
-  if (
-    collideWithCoffee &&
-    !collisionTable1 &&
-    !collisionTable2 &&
-    !collisionTable3 &&
-    !collisionTable4
-  ) {
+  if (collideWithCoffee && !collisionPlatforms) {
     gameOver();
   }
 }
@@ -319,8 +283,8 @@ function draw() {
   } else if (gameIsRunning) {
     gameStart = false;
     gameIsOver = false;
-    if (currentLevel === 1) { 
-      drawLevel1();
+    if (currentLevel === 1) {
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {

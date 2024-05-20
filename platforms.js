@@ -13,16 +13,16 @@ export default class Platform {
     this.sunk = false;
   }
 
-  sinkingStart(){
+  sinkingStart() {
     this.sinking = true;
     this.sinkingTimerStart = millis();
   }
 
-  update(){
-   if (this.sinking && millis() - this.sinkingTimerStart > 2000) {
-  this.isVisible = false;
-  this.sunk = true;
-   }
+  update() {
+    if (this.sinking && millis() - this.sinkingTimerStart > 2000) {
+      this.isVisible = false;
+      this.sunk = true;
+    }
   }
 
   displayRock() {
@@ -98,58 +98,6 @@ export default class Platform {
     pop();
   }
 
-  displayTable() {
-    noStroke();
-    push();
-    translate(this.position.x, this.position.y);
-    this.position.x += this.direction * this.speed;
-    for (let y in this.data) {
-      for (let x in this.data[y]) {
-        let pixel = this.data[y][x];
-        if (pixel === 1) {
-          fill("white");
-          rect(x * this.size, y * this.size, this.size, this.size);
-        } else if (pixel === 2) {
-          fill("lightgrey");
-          rect(x * this.size, y * this.size, this.size, this.size);
-        }
-      }
-    }
-
-    if (this.position.x <= this.minX || this.position.x >= this.maxX) {
-      this.direction *= -1;
-    }
-    pop();
-  }
-
-  displaySinkingTable() {
-    this.update();
-    if (this.sunk){
-      return;
-    }
-    noStroke();
-    push();
-    translate(this.position.x, this.position.y);
-    this.position.x += this.direction * this.speed;
-    for (let y in this.data) {
-      for (let x in this.data[y]) {
-        let pixel = this.data[y][x];
-        if (pixel === 1) {
-          fill("white");
-          rect(x * this.size, y * this.size, this.size, this.size);
-        } else if (pixel === 2) {
-          fill("lightgrey");
-          rect(x * this.size, y * this.size, this.size, this.size);
-        }
-      }
-    }
-
-    if (this.position.x <= this.minX || this.position.x >= this.maxX) {
-      this.direction *= -1;
-    }
-    pop();
-  }
-
   displayLog() {
     push();
     translate(this.position.x, this.position.y);
@@ -192,6 +140,58 @@ export default class Platform {
           rect(x * this.size, y * this.size, this.size, this.size);
         }
       }
+    }
+    pop();
+  }
+
+  displayTable() {
+    noStroke();
+    push();
+    translate(this.position.x, this.position.y);
+    this.position.x += this.direction * this.speed;
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill("white");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill("lightgrey");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+      }
+    }
+
+    if (this.position.x <= this.minX || this.position.x >= this.maxX) {
+      this.direction *= -1;
+    }
+    pop();
+  }
+
+  displaySinkingTable() {
+    this.update();
+    if (this.sunk) {
+      return;
+    }
+    noStroke();
+    push();
+    translate(this.position.x, this.position.y);
+    this.position.x += this.direction * this.speed;
+    for (let y in this.data) {
+      for (let x in this.data[y]) {
+        let pixel = this.data[y][x];
+        if (pixel === 1) {
+          fill("white");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        } else if (pixel === 2) {
+          fill("lightgrey");
+          rect(x * this.size, y * this.size, this.size, this.size);
+        }
+      }
+    }
+
+    if (this.position.x <= this.minX || this.position.x >= this.maxX) {
+      this.direction *= -1;
     }
     pop();
   }
