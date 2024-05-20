@@ -17,7 +17,7 @@ let backgroundImage3;
 let startScreenImage;
 let gameOverImage;
 let gameWonImage;
-  
+
 let currentLevel = 1;
 
 let messageTimer = 120;
@@ -164,7 +164,8 @@ function drawLevel1() {
 
   for (let i = 0; i < lives; i++) {
     textSize(32);
-    text("❤️", 20 + i * 40, 20);
+    fill(149, 26, 46);
+    text("★", 20 + i * 40, 20);
   }
 
   noStroke();
@@ -237,6 +238,12 @@ let veronica = new Character(275, 530, size, data.veronica, -2);
 
 function drawLevel2() {
   image(backgroundImage2, 0, 0, 600, 600);
+
+  for (let i = 0; i < lives; i++) {
+    textSize(32);
+    fill(149, 26, 46);
+    text("★", 20 + i * 40, 20);
+  }
 
   obstaclesLevel2.forEach((obstacle) => obstacle.displayBird());
   platformsLevel2.forEach((platform) => platform.displayLog());
@@ -312,6 +319,12 @@ platformsLevel3.push(table, table2, table3, table4, table5);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
+
+  for (let i = 0; i < lives; i++) {
+    textSize(32);
+    fill(149, 26, 46);
+    text("★", 20 + i * 40, 20);
+  }
 
   //display randos and tables. we have 2 display functions for randos because we wanted different colors
   randosRight.forEach((obstacle) => obstacle.displayRando1());
