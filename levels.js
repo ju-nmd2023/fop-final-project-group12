@@ -63,8 +63,8 @@ function gameOver() {
   text("press 'R' to retry", 300, 400);
 
   if (keyIsPressed && key === "r") {
-    startScreen();
     gameIsOver = false;
+    startScreen();
   }
 }
 
@@ -254,12 +254,12 @@ let table4 = new Platform(table4Position, data.table, size, 100, 250);
 let ene = new Character(275, 530, size, data.ene);
 
 //define randos positions
-let rando1Position = { x: 10, y: 310 };
-let rando2Position = { x: 10, y: 390 };
-let rando3Position = { x: 30, y: 480 };
-let rando4Position = { x: 200, y: 310 };
-let rando5Position = { x: 400, y: 390 };
-let rando6Position = { x: 300, y: 480 };
+let rando1Position = { x: 10, y: 270 };
+let rando2Position = { x: 10, y: 350 };
+let rando3Position = { x: 30, y: 440 };
+let rando4Position = { x: 200, y: 270 };
+let rando5Position = { x: 400, y: 350 };
+let rando6Position = { x: 300, y: 440 };
 
 //reflected randos
 let randoReflected = data.rando.map((row) => row.slice().reverse());
