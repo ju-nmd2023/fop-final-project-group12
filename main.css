@@ -11,5 +11,10 @@ canvas{
 }
 
 h1{
+    color:rgb(235,201,24);
+    font-family: "puffin-arcade-liquid", sans-serif;
+    font-size: 170px ;
+    font-style: normal;
    text-align: center;
+   margin: 0px;
 }
