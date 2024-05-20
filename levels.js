@@ -43,6 +43,8 @@ window.setup = setup;
 //set pixel size for all of the arrays
 const size = 4.5;
 
+
+
 //START SCREEN
 function startScreen() {
   gameStart = true;
@@ -95,6 +97,9 @@ function gameWon() {
   }
 }
 
+window.startScreen = startScreen;
+window.gameWon = gameWon;
+window.gameOver = gameOver;
 //LEVEL 1
 
 //arrays
@@ -332,7 +337,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
