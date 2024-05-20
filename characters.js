@@ -202,19 +202,8 @@ export default class Character {
       characterTop < waterBottom &&
       characterBottom > waterTop
     ) {
-      //if collision is detected, the position of the character is reset
-      //this.x = 275;
-      //this.y = 540;
       return true;
-    } else if (
-      characterLeft < waterRight &&
-      characterRight > waterLeft &&
-      characterTop < waterBottom &&
-      characterBottom > waterTop
-    ) {
-      //this.x = platform.position.x + 10;
     }
-    return false;
   }
 
   collideRedbull(powerup) {
@@ -243,6 +232,7 @@ export default class Character {
       powerup.isVisible = false;
     }
   }
+
   collideSnus(powerup) {
     //character bounding box
     let characterLeft = this.x;
