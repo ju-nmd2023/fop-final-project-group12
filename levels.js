@@ -168,7 +168,7 @@ function drawLevel1() {
     nina.collidePlatforms(platform)
   );
 
-  if (collideWithWater && !collisionPlatforms) {
+  if ((collideWithWater && !collisionPlatforms) || collisionObstacles) {
     gameOver();
   }
 }
@@ -294,7 +294,7 @@ function drawLevel3() {
   );
   const collisionObstacles2 = randosRight.some((obstacle) =>
     ene.collide(obstacle)
-  ); 
+  );
 
   //collision with water and platforms
   const collideWithCoffee = ene.collideWater(coffee);
@@ -302,7 +302,7 @@ function drawLevel3() {
     ene.collidePlatforms(platform)
   );
 
-  if (collideWithCoffee && !collisionPlatforms) {
+  if ((collideWithCoffee && !collisionPlatforms) || collisionObstacles) {
     gameOver();
   }
 
@@ -318,7 +318,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
@@ -328,10 +328,10 @@ function draw() {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
-    } 
+    }
   } else if (gameIsOver) {
     gameOver();
-  } else if (gameIsWon){
+  } else if (gameIsWon) {
     gameWon();
   }
 }
