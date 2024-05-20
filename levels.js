@@ -269,9 +269,9 @@ let randoReflected = data.rando.map((row) => row.slice().reverse());
 //create two randos
 let rando1 = new Obstacle({ x: 10, y: 330 }, randoReflected, size, 12);
 let rando2 = new Obstacle({ x: 10, y: 370 }, data.rando, size, -13);
-let rando3 = new Obstacle({ x: 30, y: 460 }, randoReflected, size, 14);
+let rando3 = new Obstacle({ x: 30, y: 450 }, randoReflected, size, 14);
 let rando4 = new Obstacle({ x: 200, y: 330 }, data.rando, size, -12);
-let rando5 = new Obstacle({ x: 300, y: 460 }, randoReflected, size, 13);
+let rando5 = new Obstacle({ x: 300, y: 450 }, randoReflected, size, 13);
 
 //add randos to obstacle array
 randosRight.push(rando1, rando3, rando5);
