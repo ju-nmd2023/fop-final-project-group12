@@ -46,8 +46,6 @@ window.setup = setup;
 //set pixel size for all of the arrays
 const size = 4.5;
 
-
-
 //START SCREEN
 function startScreen() {
   gameStart = true;
@@ -148,7 +146,7 @@ platformsLevel1.push(car);
 //create the character nína
 let nina = new Character(275, 540, size, data.nina, 0);
 
-raindrops = new Raindrop(width, height);
+raindrops = new Raindrop(600, 600);
 
 function drawLevel1() {
   image(backgroundImage1, 0, 0, 600, 600);

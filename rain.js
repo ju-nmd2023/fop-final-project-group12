@@ -46,3 +46,5 @@ export default class Raindrop {
     }
   }
 }
+
+//the code for rain is the one we learned in class with Garrit
