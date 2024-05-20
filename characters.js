@@ -107,17 +107,6 @@ export default class Character {
       this.speedX = 0;
     }
 
-
-    if (keyIsDown(39)) {
-      // right arrow
-      this.speedX = 5;
-    } else if (keyIsDown(37)) {
-      // left arrow
-      this.speedX = -5;
-    } else {
-      this.speedX = 0;
-    }
-
     if (keyIsDown(38)) {
       // up arrow
       this.speedY = -5;
