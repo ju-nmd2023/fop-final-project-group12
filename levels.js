@@ -326,7 +326,7 @@ function draw() {
     } else if (currentLevel === 3) {
       drawLevel3();
     }
-    if (nina.y < 20 && currentLevel === 1) {
+    if (nina.y < 30 && currentLevel === 1) {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
