@@ -29,7 +29,7 @@ function resetCharacters() {
   nina = new Character(275, 540, size, data.nina, 0);
   veronica = new Character(275, 530, size, data.veronica, -2);
   ene = new Character(275, 530, size, data.ene);
-  redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
+  redbull = new Powerup({ x: 65, y: 530 }, data.redbull, size);
   snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 }
 
@@ -288,7 +288,7 @@ randosLeft.push(rando2, rando4);
 let ene = new Character(275, 530, size, data.ene);
 
 //create redbull
-let redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
+let redbull = new Powerup({ x: 65, y: 530 }, data.redbull, size);
 let snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 
 //create tables
@@ -361,7 +361,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
@@ -374,7 +374,7 @@ function draw() {
     }
   } else if (gameIsOver) {
     gameOver();
-  } else if (gameIsWon) {
+  } else if (gameIsWon) { 
     gameWon();
   }
 }
