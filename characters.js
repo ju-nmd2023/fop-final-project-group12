@@ -91,7 +91,7 @@ export default class Character {
     if (this.collisionRedbull) {
       this.x += this.speedX * 2;
       this.y += this.speedY * 2;
-    } else  if (this.collisionSnus){
+    } else if (this.collisionSnus) {
       this.x += this.speedX * 0.5;
       this.y += this.speedY * 0.5;
     } else {
@@ -144,7 +144,11 @@ export default class Character {
       characterTop < obstacleBottom &&
       characterBottom > obstacleTop
     ) {
-      //if collision is detected, the position of the character is reset
+      lives--;
+      resetCharacters();
+    }
+    //if all lives are lost, gameOver
+    if (lives <= 0) {
       gameOver();
     }
   }
