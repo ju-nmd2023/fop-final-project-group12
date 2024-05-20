@@ -25,6 +25,7 @@ function resetCharacters() {
   veronica = new Character(275, 530, size, data.veronica, -2);
   ene = new Character(275, 530, size, data.ene);
   redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
+  snus = new Powerup({x: 525, y:550}, data.snus, size);
 }
 
 function setup() {
@@ -270,6 +271,7 @@ let ene = new Character(275, 530, size, data.ene);
 
 //create redbull
 let redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
+let snus = new Powerup({x: 525, y:550}, data.snus, size);
 
 //create tables
 let table = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
@@ -292,7 +294,9 @@ function drawLevel3() {
   ene.displayEne();
   ene.movement();
   redbull.display();
-  ene.collidePowerup(redbull);
+  snus.display();
+  ene.collideRedbull(redbull);
+  ene.collideSnus(snus);
 
   // check collisions with randos
   const collisionObstacles = randosLeft.some((obstacle) =>
@@ -328,7 +332,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
