@@ -24,12 +24,14 @@ let messageTimer = 120;
 
 let raindrops;
 
+let lives = 3;
+
 //redefines start positions for characters so game restart works
 function resetCharacters() {
   nina = new Character(275, 540, size, data.nina, 0);
   veronica = new Character(275, 530, size, data.veronica, -2);
   ene = new Character(275, 530, size, data.ene);
-  redbull = new Powerup({ x: 65, y: 530 }, data.redbull, size);
+  redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
   snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 }
 
@@ -53,6 +55,7 @@ function startScreen() {
   gameStart = true;
   gameIsOver = false;
   gameIsRunning = false;
+
   image(startScreenImage, 0, 0, 600, 600);
   noStroke();
   fill(149, 26, 46);
@@ -84,7 +87,7 @@ function gameOver() {
 
   if (keyIsPressed && key === "r") {
     gameIsOver = false;
-    gameIsRunning = true;
+    gameStart = true;
     resetCharacters();
   }
 }
@@ -157,6 +160,11 @@ raindrops = new Raindrop(600, 600);
 
 function drawLevel1() {
   image(backgroundImage1, 0, 0, 600, 600);
+
+  for (let i = 0; i < lives; i++) {
+    textSize(32);
+    text("❤️", 20 + i * 40, 20);
+  }
 
   noStroke();
 
@@ -288,7 +296,7 @@ randosLeft.push(rando2, rando4);
 let ene = new Character(275, 530, size, data.ene);
 
 //create redbull
-let redbull = new Powerup({ x: 65, y: 530 }, data.redbull, size);
+let redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
 let snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 
 //create tables
@@ -361,7 +369,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
@@ -374,7 +382,7 @@ function draw() {
     }
   } else if (gameIsOver) {
     gameOver();
-  } else if (gameIsWon) { 
+  } else if (gameIsWon) {
     gameWon();
   }
 }
