@@ -21,6 +21,13 @@ export default class Powerup {
           } else if (pixel === 3) {
             fill(166, 44, 43);
             rect(x * this.size, y * this.size, this.size, this.size);
+          } else if (pixel === 4) {
+            fill("darkgrey");
+            rect(x * this.size, y * this.size, this.size, this.size);
+          } 
+          else if (pixel === 5) {
+            fill("yellow");
+            rect(x * this.size, y * this.size, this.size, this.size);
           } 
         }
       } 
@@ -41,7 +48,13 @@ export default class Powerup {
        } else if (pixel === 2) {
          fill(50, 82, 123);
          rect(x * this.size, y * this.size, this.size, this.size);
-       }
+       } else if (pixel === 3) {
+        fill("darkgrey");
+        rect(x * this.size, y * this.size, this.size, this.size);
+      } else if (pixel === 4) {
+        fill("yellow");
+        rect(x * this.size, y * this.size, this.size, this.size);
+      } 
      }
    } 
    pop();
