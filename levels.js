@@ -200,7 +200,8 @@ function drawLevel1() {
   );
 
   if ((collideWithWater && !collisionPlatforms) || collisionObstacles) {
-    gameOver();
+    lives--;
+    resetCharacters();
   }
 }
 
@@ -270,10 +271,12 @@ function drawLevel2() {
     (collideWithWaterTop && !collisionPlatforms && !collideWithLogFour) ||
     collisionObstacles
   ) {
-    gameOver();
+    lives--;
+    resetCharacters();
   }
   if (veronica.x < 80 || veronica.x > 470) {
-    gameOver();
+    lives--;
+    resetCharacters();
   }
 }
 
@@ -368,7 +371,8 @@ function drawLevel3() {
     collisionObstacles ||
     collisionObstacles2
   ) {
-    gameOver();
+    lives--;
+    resetCharacters();
   }
 
   if (ene.y < -50) {
