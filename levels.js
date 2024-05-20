@@ -20,6 +20,8 @@ let gameWonImage;
 
 let currentLevel = 1;
 
+let messageTimer = 120;
+
 let raindrops;
 
 //redefines start positions for characters so game restart works
@@ -309,6 +311,17 @@ function drawLevel3() {
   ene.collideRedbull(redbull);
   ene.collideSnus(snus);
 
+  //the text with timer was taken from Chat GPT https://chatgpt.com/share/0a57fef9-c81f-45a5-8f5d-1c34f6ab5d2a
+  if (messageTimer > 0) {
+    fill(235, 201, 24);
+    rect(100, 250, 400, 100);
+    textSize(20);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Pick a powerup wisely: Redbull or Snus?", 300, 300);
+    messageTimer--; //this decreases the timer each frame
+  }
+
   // check collisions with randos
   const collisionObstacles = randosLeft.some((obstacle) =>
     ene.collide(obstacle)
@@ -343,7 +356,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
