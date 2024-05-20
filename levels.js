@@ -9,6 +9,7 @@ let gameIsRunning = false;
 let gameStart = true;
 let gameIsOver = false;
 let gameIsWon = false;
+
 let backgroundImage1;
 let backgroundImage2;
 let backgroundImage3;
@@ -33,7 +34,7 @@ function setup() {
   backgroundImage3 = loadImage("images/background3.png");
   startScreenImage = loadImage("images/startscreen.png");
   gameOverImage = loadImage("images/gameover.png");
-  gameWonImage = loadImage("images./gamewon.png");
+  gameWonImage = loadImage("images/gamewon.png");
 }
 window.setup = setup;
 
@@ -84,7 +85,7 @@ function gameWon() {
   textSize(18);
   fill(255);
   textAlign(CENTER, CENTER);
-  text("press space to start again", 300, 400);
+  text("press space to start again", 300, 280);
 
   if (keyIsPressed && key === " ") {
     gameStart = true;
@@ -235,15 +236,15 @@ function drawLevel2() {
 //LEVEL 3
 
 //arrays
-let randosRight = []; 
+let randosRight = [];
 let randosLeft = [];
 let platformsLevel3 = [];
 
-let coffee = new Water(0, 0, 600, 300); 
+let coffee = new Water(0, 0, 600, 300);
 
 //reflected randos
 let randoReflected = data.rando.map((row) => row.slice().reverse());
- 
+
 //create two randos
 let rando1 = new Obstacle({ x: 10, y: 330 }, randoReflected, size, 12);
 let rando2 = new Obstacle({ x: 10, y: 370 }, data.rando, size, -13);
@@ -259,8 +260,8 @@ randosLeft.push(rando2, rando4);
 //create ene character
 let ene = new Character(275, 530, size, data.ene);
 
-//create redbull 
-let redbull = new Powerup({x: 65, y: 550}, data.redbull, size);
+//create redbull
+let redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
 
 //create tables
 let table = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
@@ -273,12 +274,12 @@ platformsLevel3.push(table, table2, table3, table4);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
-  
+
   //display randos and tables. we have 2 display functions for randos because we wanted different colors
   randosRight.forEach((obstacle) => obstacle.displayRando1());
   randosLeft.forEach((obstacle) => obstacle.displayRando2());
   platformsLevel3.forEach((platform) => platform.displayTable());
- 
+
   ene.displayEne();
   ene.movement();
   redbull.display();
@@ -296,7 +297,7 @@ function drawLevel3() {
   const collideWithCoffee = ene.collideWater(coffee);
   const collisionPlatforms = platformsLevel3.some((platform) =>
     ene.collidePlatforms(platform)
-  ); 
+  );
 
   if (collideWithCoffee && !collisionPlatforms) {
     gameOver();
@@ -320,13 +321,8 @@ function draw() {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
-<<<<<<< HEAD
-    } else if (ene.y < -20 && currentLevel === 3) {
-      gameIsWon === true;
-=======
     } else if (ene.y > 60 && currentLevel === 3) {
       gameWon();
->>>>>>> 30e8a8173cff98dacbf046965472a0d04dadcbdf
     }
   } else if (gameIsOver) {
     gameOver();
