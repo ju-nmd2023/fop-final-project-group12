@@ -240,12 +240,12 @@ let coffee = new Water(0, 0, 600, 300);
 let randoReflected = data.rando.map((row) => row.slice().reverse());
 
 //create two randos
-let rando1 = new Obstacle({ x: 10, y: 300 }, randoReflected, size, 12);
-let rando2 = new Obstacle({ x: 10, y: 350 }, data.rando, size, -13);
-let rando3 = new Obstacle({ x: 30, y: 440 }, randoReflected, size, 14);
-let rando4 = new Obstacle({ x: 200, y: 300 }, data.rando, size, -12);
-let rando5 = new Obstacle({ x: 300, y: 440 }, randoReflected, size, 13);
-let rando6 = new Obstacle({ x: 400, y: 350 }, data.rando, size, -14);
+let rando1 = new Obstacle({ x: 10, y: 330 }, randoReflected, size, 12);
+let rando2 = new Obstacle({ x: 10, y: 370 }, data.rando, size, -13);
+let rando3 = new Obstacle({ x: 30, y: 460 }, randoReflected, size, 14);
+let rando4 = new Obstacle({ x: 200, y: 330 }, data.rando, size, -12);
+let rando5 = new Obstacle({ x: 300, y: 460 }, randoReflected, size, 13);
+let rando6 = new Obstacle({ x: 400, y: 370 }, data.rando, size, -14);
 
 //add randos to obstacle array
 randosRight.push(rando1, rando3, rando5);
@@ -300,7 +300,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
