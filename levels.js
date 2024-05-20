@@ -270,9 +270,10 @@ let table = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
 let table2 = new Platform({ x: 300, y: 180 }, data.table, size, 300, 400);
 let table3 = new Platform({ x: 100, y: 120 }, data.table, size, 100, 350);
 let table4 = new Platform({ x: 200, y: 60 }, data.table, size, 100, 250);
+let table5 = new Platform({ x: 200, y: 5 }, data.table, size, 200, 350);
 
 //adds tables to platform array
-platformsLevel3.push(table, table2, table3, table4);
+platformsLevel3.push(table, table2, table3, table4, table5);
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
