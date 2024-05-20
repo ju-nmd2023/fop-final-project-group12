@@ -227,9 +227,14 @@ function drawLevel2() {
   const collisionPlatforms = platformsLevel2.some((platform) =>
     veronica.collidePlatforms(platform)
   );
-  veronica.collidePlatforms(logFour);
 
-  if ((collideWithWaterTop && !collisionPlatforms) || collisionObstacles) {
+  // check collision with logFour separately
+  const collideWithLogFour = veronica.collidePlatforms(logFour);
+
+  if (
+    (collideWithWaterTop && !collisionPlatforms && !collideWithLogFour) ||
+    collisionObstacles
+  ) {
     gameOver();
   }
   if (veronica.x < 80 || veronica.x > 470) {
