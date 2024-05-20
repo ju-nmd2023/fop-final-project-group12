@@ -234,6 +234,7 @@ export default class Character {
     ) {
       //if collision is detected, the position of the character is reset
       this.collisionRedbull = true;
+      this.colisionSnus = false;
       powerup.isVisible = false;
     }
   }
@@ -259,6 +260,7 @@ export default class Character {
     ) {
       //if collision is detected, the position of the character is reset
       this.collisionSnus = true;
+      this.collisionRedbull = false;
       powerup.isVisible = false;
     }
   }

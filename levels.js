@@ -46,6 +46,8 @@ window.setup = setup;
 //set pixel size for all of the arrays
 const size = 4.5;
 
+
+
 //START SCREEN
 function startScreen() {
   gameStart = true;
@@ -98,6 +100,9 @@ function gameWon() {
   }
 }
 
+window.startScreen = startScreen;
+window.gameWon = gameWon;
+window.gameOver = gameOver;
 //LEVEL 1
 
 //arrays
