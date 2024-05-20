@@ -199,7 +199,7 @@ let logThree = new Platform({ x: 310, y: 100 }, data.log, size, 100, 320);
 let logFour = new Platform({ x: 250, y: 35 }, data.log, size, 240, 460);
 
 //adds logs to platform array
-platformsLevel2.push(log, logTwo, logThree, logFour);
+platformsLevel2.push(log, logTwo, logThree);
 
 //create veronica character. speed defined as -2 to make the "wind" effect
 let veronica = new Character(275, 530, size, data.veronica, -2);
@@ -224,6 +224,7 @@ function drawLevel2() {
   const collisionPlatforms = platformsLevel2.some((platform) =>
     veronica.collidePlatforms(platform)
   );
+  veronica.collidePlatforms(logFour);
 
   if ((collideWithWaterTop && !collisionPlatforms) || collisionObstacles) {
     gameOver();
@@ -321,7 +322,7 @@ function draw() {
       currentLevel = 2;
     } else if (veronica.y < -20 && currentLevel === 2) {
       currentLevel = 3;
-    } else if (ene.y > 60 && currentLevel === 3) {
+    } else if (ene.y < 20 && currentLevel === 3) {
       gameWon();
     }
   } else if (gameIsOver) {
