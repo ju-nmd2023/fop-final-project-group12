@@ -19,11 +19,8 @@ let gameOverImage;
 let gameWonImage;
 
 let currentLevel = 1;
-
 let messageTimer = 120;
-
 let raindrops;
-
 let lives = 3;
 
 //redefines start positions for characters so game restart works

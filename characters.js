@@ -150,6 +150,7 @@ export default class Character {
     //if all lives are lost, gameOver
     if (lives <= 0) {
       gameOver();
+      lives = 3;
     }
   }
 
