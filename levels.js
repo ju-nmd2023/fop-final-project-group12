@@ -90,7 +90,7 @@ function gameWon() {
   gameIsWon = true;
   image(gameWonImage, 0, 0, 600, 600);
   textSize(18);
-  fill(255);
+  fill(0);
   textAlign(CENTER, CENTER);
   text("press space to start again", 300, 280);
 
@@ -356,7 +356,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
