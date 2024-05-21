@@ -128,12 +128,15 @@ export default class Character {
       this.speedY = 0;
     }
 
-    //charecters cannot move outside of canvas 
+    //charecters cannot move outside of canvas
     if (this.x < 0) {
       this.x = 0;
-    }
-    if (this.x >= 560) {
+    } else if (this.x >= 560) {
       this.x = 560;
+    }
+
+    if (this.y >= 550) {
+      this.y = 550;
     }
 
     pop();
