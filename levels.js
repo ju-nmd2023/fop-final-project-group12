@@ -59,7 +59,6 @@ function startScreen() {
   rect(200, 375, 200, 50);
   textSize(18);
   fill(0);
-
   textAlign(CENTER, CENTER);
   text("Bring Nína, Veronica and Ene to school so they can code!", 300, 330);
   fill(255);
@@ -215,8 +214,8 @@ function drawLevel1() {
 let obstaclesLevel2 = [];
 let platformsLevel2 = [];
 
-//creates the bounding boxes for the water, one at the top, one on the left and one on the right
-let waterLevelTwoTop = new Water(0, 0, 600, 300);
+//creates the bounding box for the water at the top
+let waterLevelTwoTop = new Water(0, 0, 600, 280);
 
 // level two mechanics
 let dataBirdReflected = data.bird.map((row) => row.slice().reverse());
@@ -233,7 +232,7 @@ obstaclesLevel2.push(birdOne, birdTwo, birdThree);
 let log = new Platform({ x: 200, y: 240 }, data.log, size, 200, 450);
 let logTwo = new Platform({ x: 110, y: 165 }, data.log, size, 100, 320);
 let logThree = new Platform({ x: 310, y: 100 }, data.log, size, 100, 320);
-let logFour = new Platform({ x: 250, y: 35 }, data.log, size, 240, 460);
+let logFour = new Platform({ x: 250, y: 10 }, data.log, size, 240, 460);
 
 //adds logs to platform array
 platformsLevel2.push(log, logTwo, logThree);
@@ -307,7 +306,7 @@ randosLeft.push(rando2, rando4);
 let ene = new Character(275, 530, size, data.ene);
 
 //create redbull
-let redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
+let redbull = new Powerup({ x: 65, y: 540 }, data.redbull, size);
 let snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 
 //create tables
@@ -383,7 +382,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
