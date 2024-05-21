@@ -10,6 +10,15 @@ export default class Character {
     this.collisionRedbull = false;
     this.collisionSnus = false;
   }
+  /* this code was adapted from Chat GPT. We wanted to avoid the repetition of the creation of the bounding box of the character, but we ended up deciding to make a function that creates the bounding boxes for everything without having to specify the same things each time. https://chatgpt.com/share/8df306a1-53f7-46bf-b4e0-9561eea17455 */
+  createBoundingBox(offsetX = 0, offsetY = 0) {
+    return {
+      left: this.x + offsetX,
+      right: this.x + offsetX + this.size * this.data[0].length,
+      top: this.y + offsetY,
+      bottom: this.y + offsetY + this.size * this.data.length,
+    };
+  }
 
   displayVeronica() {
     noStroke();
@@ -123,26 +132,21 @@ export default class Character {
   }
 
   collide(obstacle) {
-    //character bounding box
-    let characterLeft = this.x;
-    let characterRight = this.x + this.size * this.data[0].length;
-    let characterTop = this.y;
-    let characterBottom = this.y + this.size * this.data.length;
-
-    //obstacle bounding box
-    let obstacleLeft = obstacle.position.x + 20;
-    let obstacleRight =
-      obstacle.position.x + this.size * obstacle.data[0].length - 20;
-    let obstacleTop = obstacle.position.y + 25;
-    let obstacleBottom =
-      obstacle.position.y + this.size * obstacle.data.length - 25;
+    //create bounding boxes
+    let characterBox = this.createBoundingBox();
+    let obstacleBox = {
+      left: obstacle.position.x + 20,
+      right: obstacle.position.x + this.size * obstacle.data[0].length - 20,
+      top: obstacle.position.y + 25,
+      bottom: obstacle.position.y + this.size * obstacle.data.length - 25,
+    };
 
     //detect collision
     if (
-      characterLeft < obstacleRight &&
-      characterRight > obstacleLeft &&
-      characterTop < obstacleBottom &&
-      characterBottom > obstacleTop
+      characterBox.left < obstacleBox.right &&
+      characterBox.right > obstacleBox.left &&
+      characterBox.top < obstacleBox.bottom &&
+      characterBox.bottom > obstacleBox.top
     ) {
       return true;
     }
@@ -150,105 +154,84 @@ export default class Character {
   }
 
   collidePlatforms(platform) {
-    //character bounding box
-    let characterLeft = this.x;
-    let characterRight = this.x + this.size * this.data[0].length;
-    let characterTop = this.y + 50;
-    let characterBottom = this.y + this.size * this.data.length;
-
-    //platform bounding box
-    let platformLeft = platform.position.x;
-    let platformRight =
-      platform.position.x + this.size * platform.data[0].length;
-    let platformTop = platform.position.y;
-    let platformBottom = platform.position.y + this.size * platform.data.length;
+    //create bounding boxes
+    let characterBox = this.createBoundingBox(0, 50);
+    let platformBox = {
+      left: platform.position.x,
+      right: platform.position.x + this.size * platform.data[0].length,
+      top: platform.position.y,
+      bottom: platform.position.y + this.size * platform.data.length,
+    };
 
     //detect collision
     if (
-      characterLeft < platformRight &&
-      characterRight > platformLeft &&
-      characterTop < platformBottom &&
-      characterBottom > platformTop
+      characterBox.left < platformBox.right &&
+      characterBox.right > platformBox.left &&
+      characterBox.top < platformBox.bottom &&
+      characterBox.bottom > platformBox.top
     ) {
-      //if collision is detected, the position of the character is reset
       this.x = platform.position.x + 10;
       return true;
     }
     return false;
   }
 
-  collideWater(water) {
-    //character bounding box
-    let characterLeft = this.x;
-    let characterRight = this.x + this.size * this.data[0].length;
-    let characterTop = this.y + 50;
-    let characterBottom = this.y + this.size * this.data.length;
-
-    //water bounding box
-    let waterLeft = 0;
-    let waterRight = 600;
-    let waterTop = 0;
-    let waterBottom = 280;
-
+  collideWater() {
+    //create bounding boxes
+    let characterBox = this.createBoundingBox(0, 50);
+    let waterBox = {
+      left: 0,
+      right: 600,
+      top: 0,
+      bottom: 280,
+    };
     //detect collision
     if (
-      characterLeft < waterRight &&
-      characterRight > waterLeft &&
-      characterTop < waterBottom &&
-      characterBottom > waterTop
+      characterBox.left < waterBox.right &&
+      characterBox.right > waterBox.left &&
+      characterBox.top < waterBox.bottom &&
+      characterBox.bottom > waterBox.top
     ) {
       return true;
     }
   }
 
   collideRedbull(powerup) {
-    //character bounding box
-    let characterLeft = this.x;
-    let characterRight = this.x + this.size * this.data[0].length;
-    let characterTop = this.y;
-    let characterBottom = this.y + this.size * this.data.length;
+    let characterBox = this.createBoundingBox();
+    let powerupBox = {
+      left: powerup.position.x,
+      right: powerup.position.x + this.size * powerup.data[0].length,
+      top: powerup.position.y,
+      bottom: powerup.position.y + this.size * powerup.data.length,
+    };
 
-    //obstacle bounding box
-    let powerupLeft = powerup.position.x;
-    let powerupRight = powerup.position.x + this.size * powerup.data[0].length;
-    let powerupTop = powerup.position.y;
-    let powerupBottom = powerup.position.y + this.size * powerup.data.length;
-
-    //detect collision
     if (
-      characterLeft < powerupRight &&
-      characterRight > powerupLeft &&
-      characterTop < powerupBottom &&
-      characterBottom > powerupTop
+      characterBox.left < powerupBox.right &&
+      characterBox.right > powerupBox.left &&
+      characterBox.top < powerupBox.bottom &&
+      characterBox.bottom > powerupBox.top
     ) {
-      //if collision is detected, the position of the character is reset
       this.collisionRedbull = true;
-      this.colisionSnus = false;
+      this.collisionSnus = false;
       powerup.isVisible = false;
     }
   }
 
   collideSnus(powerup) {
-    //character bounding box
-    let characterLeft = this.x;
-    let characterRight = this.x + this.size * this.data[0].length;
-    let characterTop = this.y;
-    let characterBottom = this.y + this.size * this.data.length;
+    let characterBox = this.createBoundingBox();
+    let powerupBox = {
+      left: powerup.position.x,
+      right: powerup.position.x + this.size * powerup.data[0].length,
+      top: powerup.position.y,
+      bottom: powerup.position.y + this.size * powerup.data.length,
+    };
 
-    //obstacle bounding box
-    let powerupLeft = powerup.position.x;
-    let powerupRight = powerup.position.x + this.size * powerup.data[0].length;
-    let powerupTop = powerup.position.y;
-    let powerupBottom = powerup.position.y + this.size * powerup.data.length;
-
-    //detect collision
     if (
-      characterLeft < powerupRight &&
-      characterRight > powerupLeft &&
-      characterTop < powerupBottom &&
-      characterBottom > powerupTop
+      characterBox.left < powerupBox.right &&
+      characterBox.right > powerupBox.left &&
+      characterBox.top < powerupBox.bottom &&
+      characterBox.bottom > powerupBox.top
     ) {
-      //if collision is detected, the position of the character is reset
       this.collisionSnus = true;
       this.collisionRedbull = false;
       powerup.isVisible = false;
