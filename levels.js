@@ -114,12 +114,10 @@ function livesCounter() {
   }
 }
 
-window.lives = lives;
 window.startScreen = startScreen;
 window.gameWon = gameWon;
 window.gameOver = gameOver;
 window.resetCharacters = resetCharacters;
-window.livesCounter = livesCounter;
 
 //LEVEL 1
 
