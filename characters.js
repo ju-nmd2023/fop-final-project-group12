@@ -145,8 +145,10 @@ export default class Character {
       characterBottom > obstacleTop
     ) {
       lives--;
+      livesCounter();
       resetCharacters();
     }
+
     //if all lives are lost, gameOver
     if (lives <= 0) {
       gameOver();
