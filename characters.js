@@ -10,7 +10,7 @@ export default class Character {
     this.collisionRedbull = false;
     this.collisionSnus = false;
   }
-  /* this code was adapted from Chat GPT. We wanted to avoid the repetition of the creation of the bounding box of the character. https://chatgpt.com/share/8df306a1-53f7-46bf-b4e0-9561eea17455 */
+  /* this code was adapted from Chat GPT. We wanted to avoid the repetition of the creation of the bounding box of the character, but we ended up deciding to make a function that creates the bounding boxes for everything without having to specify the same things each time. https://chatgpt.com/share/8df306a1-53f7-46bf-b4e0-9561eea17455 */
   createBoundingBox(offsetX = 0, offsetY = 0) {
     return {
       left: this.x + offsetX,
@@ -132,8 +132,8 @@ export default class Character {
     if (this.x < 0) {
       this.x = 0;
     }
-    if (this.x + this.size > 600) {
-      this.x = 600 - this.size;
+    if (this.x >= 560) {
+      this.x = 560;
     }
 
     pop();
