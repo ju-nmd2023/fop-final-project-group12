@@ -400,6 +400,12 @@ function draw() {
   } else if (gameIsWon) {
     gameWon();
   }
+
+  //if all lives are lost, gameOver
+  if (lives <= 0) {
+    gameOver();
+    lives = 3;
+  }
 }
 
 window.draw = draw;

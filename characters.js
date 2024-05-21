@@ -144,16 +144,9 @@ export default class Character {
       characterTop < obstacleBottom &&
       characterBottom > obstacleTop
     ) {
-      lives--;
-      livesCounter();
-      resetCharacters();
+      return true;
     }
-
-    //if all lives are lost, gameOver
-    if (lives <= 0) {
-      gameOver();
-      lives = 3;
-    }
+    return false;
   }
 
   collidePlatforms(platform) {
