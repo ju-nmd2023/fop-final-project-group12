@@ -155,7 +155,7 @@ export default class Character {
 
   collidePlatforms(platform) {
     //create bounding boxes
-    let characterBox = this.createBoundingBox(0, 50);
+    let characterBox = this.createBoundingBox(0, 0);
     let platformBox = {
       left: platform.position.x,
       right: platform.position.x + this.size * platform.data[0].length,

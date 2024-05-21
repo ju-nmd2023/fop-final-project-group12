@@ -19,7 +19,7 @@ let gameOverImage;
 let gameWonImage;
 
 let currentLevel = 1;
-let messageTimer = 120;
+let messageTimer = 110;
 let raindrops;
 let lives = 3;
 
@@ -59,6 +59,7 @@ function startScreen() {
   rect(200, 375, 200, 50);
   textSize(18);
   fill(0);
+
   textAlign(CENTER, CENTER);
   text("Bring Nína, Veronica and Ene to school so they can code!", 300, 330);
   fill(255);
