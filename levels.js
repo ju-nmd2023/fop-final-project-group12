@@ -28,8 +28,8 @@ function resetCharacters() {
   nina = new Character(275, 540, size, data.nina, 0);
   veronica = new Character(275, 530, size, data.veronica, -2);
   ene = new Character(275, 530, size, data.ene);
-  redbull = new Powerup({ x: 65, y: 550 }, data.redbull, size);
-  snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
+  redbull = new Powerup({ x: 65, y: 525 }, data.redbull, size);
+  snus = new Powerup({ x: 525, y: 532 }, data.snus, size);
 }
 
 function setup() {
@@ -383,7 +383,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
