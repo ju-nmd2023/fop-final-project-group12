@@ -355,15 +355,16 @@ function drawLevel3() {
     ene.collide(obstacle)
   );
 
-  //collision with water and platforms
+  //collision with coffee and platforms
   const collideWithCoffee = ene.collideWater(coffee);
   const collisionPlatforms = platformsLevel3.some((platform) =>
     ene.collidePlatforms(platform)
-  );
-
-  if (this.sinking && millis() - this.tableTimer > 2000){
-    platformsLevel3.splice(0);
-  }
+  ); 
+   
+ if (ene.collidePlatforms(table)){
+  platformsLevel3.splice(platformsLevel3.indexOf(table),1); 
+ 
+ } 
 
   if (
     (collideWithCoffee && !collisionPlatforms) ||

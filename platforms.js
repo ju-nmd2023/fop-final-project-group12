@@ -7,7 +7,10 @@ export default class Platform {
     this.direction = 1;
     this.minX = minX;
     this.maxX = maxX;
+  
   }
+
+  
 
   displayRock() {
     push();
@@ -129,6 +132,7 @@ export default class Platform {
   }
 
   displayTable() {
+    
     noStroke();
     push();
     translate(this.position.x, this.position.y);

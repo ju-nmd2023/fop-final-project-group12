@@ -7,8 +7,9 @@ export default class Character {
     this.speed = speed;
     this.speedX = 0;
     this.speedY = 0;
-    this.tableTimer = null;
+    this.tableTimer = 0;
     this.sinking = false;
+    this.sinkingTable = null;
     this.collisionRedbull = false;
     this.collisionSnus = false;
   }
@@ -197,7 +198,7 @@ export default class Character {
 
   collideWater() {
     //create bounding boxes
-    let characterBox = this.createBoundingBox(0, 50);
+    let characterBox = this.createBoundingBox(0, 20);
     let waterBox = {
       left: 0,
       right: 600,
@@ -256,6 +257,12 @@ export default class Character {
       powerup.isVisible = false;
     }
   }
+  
+ update(){
+  if (this.sinkingTable && millis() - this.tableTimer > 2000){
+    this.sinking = true;
+  }
+ }
   sinkingTable(table){
     let characterBox = this.createBoundingBox();
     let tableBox = {
@@ -270,10 +277,14 @@ export default class Character {
       characterBox.top < tableBox.bottom &&
       characterBox.bottom > tableBox.top 
     ) {
-      sinkingStart();
+      update();
+    } else {
+      return;
     }
+    
     
 
 
   }
+  
 }
