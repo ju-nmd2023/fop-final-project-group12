@@ -5,12 +5,11 @@ export default class Platform {
     this.size = size;
     this.speed = 4;
     this.direction = 1;
+
+    //min and max x are defined so that platforms can move back and forth at set positions
     this.minX = minX;
     this.maxX = maxX;
-  
   }
-
-  
 
   displayRock() {
     push();
@@ -38,6 +37,8 @@ export default class Platform {
       }
     }
     pop();
+
+    //moving back and forth
     if (this.position.x <= this.minX || this.position.x >= this.maxX) {
       this.direction *= -1;
     }
@@ -105,11 +106,14 @@ export default class Platform {
       }
     }
 
+    //moving back and forth
     if (this.position.x <= this.minX || this.position.x >= this.maxX) {
       this.direction *= -1;
     }
     pop();
   }
+
+  //created a separate display function for a log that is not supposed to move
   displayStillLog() {
     push();
     translate(this.position.x, this.position.y);
@@ -131,8 +135,7 @@ export default class Platform {
     pop();
   }
 
-  displayTable() {
-    
+  displayTable() { 
     noStroke();
     push();
     translate(this.position.x, this.position.y);
@@ -150,6 +153,7 @@ export default class Platform {
       }
     }
 
+    //moving back and forth
     if (this.position.x <= this.minX || this.position.x >= this.maxX) {
       this.direction *= -1;
     }

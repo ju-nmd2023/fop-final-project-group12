@@ -6,6 +6,7 @@ export default class Obstacle {
     //speed was added to make sure it could be changed independently for the busses in other lanes
     this.speed = speed;
   }
+
   displayBus() {
     push();
     translate(this.position.x, this.position.y);
@@ -28,9 +29,9 @@ export default class Obstacle {
         }
       }
     }
-    //creates a loop for the busses, with the speed controlling for the start and end points
-    //a speed less than 0, meaning it will move right to left, makes the bus start at 700 after it reaches -150
-    //and the inverse is true for busses with a speed greater than 0.
+    //creates a loop for the busses
+    //when speed is negative (<0), meaning the bus will move right to left, the bus restarts at 700 after it reaches -140
+    //and the inverse is true for busses with a speed greater than 0, restarting at -150.
     if (this.speed > 0 && this.position.x > 640) {
       this.position.x = -150;
     } else if (this.speed < 0 && this.position.x < -140) {
@@ -38,6 +39,7 @@ export default class Obstacle {
     }
     pop();
   }
+
   displayBird() {
     noStroke();
     push();
@@ -61,6 +63,7 @@ export default class Obstacle {
         }
       }
     }
+    //same loop logic as in the buses
     if (this.speed > 0 && this.position.x > 640) {
       this.position.x = -150;
     } else if (this.speed < 0 && this.position.x < -140) {
@@ -96,6 +99,8 @@ export default class Obstacle {
         }
       }
     }
+
+    //same loop logic as buses and birds
     if (this.speed > 0 && this.position.x > 640) {
       this.position.x = -150;
     } else if (this.speed < 0 && this.position.x < -140) {
@@ -131,6 +136,8 @@ export default class Obstacle {
         }
       }
     }
+
+    //same loop logic
     if (this.speed > 0 && this.position.x > 640) {
       this.position.x = -150;
     } else if (this.speed < 0 && this.position.x < -140) {

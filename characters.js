@@ -4,13 +4,14 @@ export default class Character {
     this.y = y;
     this.size = size;
     this.data = data;
-    this.speed = speed;
+    this.speed = speed; //speed of the wind in second level
     this.speedX = 0;
     this.speedY = 0;
 
     this.collisionRedbull = false;
     this.collisionSnus = false;
   }
+
   /* this code was adapted from Chat GPT. We wanted to avoid the repetition of the creation of the bounding box of the character, but we ended up deciding to make a function that creates the bounding boxes for everything without having to specify the same things each time. https://chatgpt.com/share/8df306a1-53f7-46bf-b4e0-9561eea17455 */
   createBoundingBox(offsetX = 0, offsetY = 0) {
     return {
@@ -98,6 +99,7 @@ export default class Character {
   movement() {
     push();
 
+    //if colliding with the powerups, speed is affected
     if (this.collisionRedbull) {
       this.x += this.speedX * 2;
       this.y += this.speedY * 2;
@@ -109,6 +111,7 @@ export default class Character {
       this.y += this.speedY;
     }
 
+    //movement mechanics. first part regulates the x position (with arrow keys left and right), second part regulates the y position (with arrow keys up and down)
     if (keyIsDown(39)) {
       // right arrow
       this.speedX = 5;

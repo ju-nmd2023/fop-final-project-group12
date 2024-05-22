@@ -5,7 +5,8 @@ export default class Powerup {
       this.size = size;
       this.isVisible = true;
     }
-    display() {
+
+    displayRedbull() {
         if(this.isVisible){
            push();
         translate(this.position.x, this.position.y);
@@ -33,8 +34,8 @@ export default class Powerup {
       } 
       pop();
         }
-
       }
+
     displaySnus(){
       if(this.isVisible){
         push();
@@ -56,5 +57,5 @@ export default class Powerup {
    } 
    pop();
      }
-
-    }}
+    }
+  }
