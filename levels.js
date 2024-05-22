@@ -151,13 +151,13 @@ the rows, and reverse() reverses it, effectively reflecting the dataBus array */
 obstaclesLevel1.push(busOne, busTwo, busThree, busFour);
 
 //creates both rocks
-let rock = new Platform({ x: 450, y: 230 }, data.rock, size, 240, 460);
-let rockTwo = new Platform({ x: 110, y: 165 }, data.rock, size, 100, 320);
+let rock = new Platform({ x: 450, y: 210 }, data.rock, size, 240, 460);
+let rockTwo = new Platform({ x: 110, y: 140 }, data.rock, size, 100, 320);
 //add rocks to platform array
 platformsLevel1.push(rock, rockTwo);
 
 //creates the car
-let car = new Platform({ x: 250, y: 25 }, data.car, size, 100, 300);
+let car = new Platform({ x: 250, y: 10 }, data.car, size, 100, 300);
 // add car to platform array
 platformsLevel1.push(car);
 
@@ -357,13 +357,9 @@ function drawLevel3() {
 
   //collision with water and platforms
   const collideWithCoffee = ene.collideWater(coffee);
-  const collisionPlatforms = platformsLevel3.some((platform) =>
-    ene.collidePlatforms(platform)
-  );
-
-  if (this.sinking && millis() - this.tableTimer > 2000){
-    platformsLevel3.splice(0);
-  }
+  const collisionPlatforms = platformsLevel3.some((platform, index) => {
+    const isColliding = ene.collidePlatforms(platform);
+  });
 
   if (
     (collideWithCoffee && !collisionPlatforms) ||
@@ -386,7 +382,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel3();
+      drawLevel1();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
