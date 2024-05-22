@@ -30,8 +30,11 @@ function resetCharacters() {
   ene = new Character(275, 530, size, data.ene);
   redbull = new Powerup({ x: 65, y: 525 }, data.redbull, size);
   snus = new Powerup({ x: 525, y: 532 }, data.snus, size);
+  if (!platformsLevel3.includes(sinkingTable)) {
+    platformsLevel3.push(sinkingTable);
+  }
 }
-
+ 
 function setup() {
   createCanvas(600, 600);
   frameRate(30);
@@ -310,14 +313,16 @@ let redbull = new Powerup({ x: 65, y: 540 }, data.redbull, size);
 let snus = new Powerup({ x: 525, y: 550 }, data.snus, size);
 
 //create tables
-let table = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
+let sinkingTable = new Platform({ x: 200, y: 240 }, data.table, size, 200, 400);
 let table2 = new Platform({ x: 300, y: 180 }, data.table, size, 300, 400);
 let table3 = new Platform({ x: 100, y: 120 }, data.table, size, 100, 350);
 let table4 = new Platform({ x: 200, y: 60 }, data.table, size, 100, 250);
 let table5 = new Platform({ x: 200, y: 5 }, data.table, size, 200, 350);
 
 //adds tables to platform array
-platformsLevel3.push(table, table2, table3, table4, table5);
+platformsLevel3.push(sinkingTable, table2, table3, table4, table5);
+
+let sinkingTableTimer = 0;
 
 function drawLevel3() {
   image(backgroundImage3, 0, 0, 600, 600);
@@ -353,7 +358,7 @@ function drawLevel3() {
   );
   const collisionObstacles2 = randosRight.some((obstacle) =>
     ene.collide(obstacle)
-  );
+  ); 
 
   //collision with coffee and platforms
   const collideWithCoffee = ene.collideWater(coffee);
@@ -361,11 +366,21 @@ function drawLevel3() {
     ene.collidePlatforms(platform)
   ); 
    
- if (ene.collidePlatforms(table)){
-  platformsLevel3.splice(0,1); 
- 
- } 
-  if (
+  //the following lines of code were provided by Garrit during the lab
+  if (platformsLevel3.includes(sinkingTable) && ene.collidePlatforms(sinkingTable)) {
+    if (sinkingTableTimer === 0) {
+      sinkingTableTimer = millis(); // Set the timer when the character collides with the sinking table
+    }
+  }  
+
+  console.log(sinkingTableTimer > 0); 
+  if (sinkingTableTimer > 0 && millis() - sinkingTableTimer > 2000) {
+    console.log("REMOVE");
+    platformsLevel3.splice(platformsLevel3.indexOf(sinkingTable),1);
+    sinkingTableTimer = 0; // Reset the timer
+  }
+
+  if ( 
     (collideWithCoffee && !collisionPlatforms) ||
     collisionObstacles ||
     collisionObstacles2
