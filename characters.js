@@ -10,6 +10,7 @@ export default class Character {
     this.tableTimer = 0;
     this.sinking = false;
     this.sinkingTable = null;
+
     this.collisionRedbull = false;
     this.collisionSnus = false;
   }
@@ -21,12 +22,6 @@ export default class Character {
       top: this.y + offsetY,
       bottom: this.y + offsetY + this.size * this.data.length,
     };
-  }
-
-  sinkingStart(){
-    this.sinking = true;
-    this.tableTimer = millis();
-    
   }
 
   displayVeronica() {

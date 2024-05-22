@@ -362,10 +362,9 @@ function drawLevel3() {
   ); 
    
  if (ene.collidePlatforms(table)){
-  platformsLevel3.splice(platformsLevel3.indexOf(table),1); 
+  platformsLevel3.splice(0,1); 
  
  } 
-
   if (
     (collideWithCoffee && !collisionPlatforms) ||
     collisionObstacles ||
