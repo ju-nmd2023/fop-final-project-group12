@@ -7,6 +7,8 @@ export default class Character {
     this.speed = speed;
     this.speedX = 0;
     this.speedY = 0;
+    this.tableTimer = null;
+    this.sinking = false;
     this.collisionRedbull = false;
     this.collisionSnus = false;
   }
@@ -18,6 +20,12 @@ export default class Character {
       top: this.y + offsetY,
       bottom: this.y + offsetY + this.size * this.data.length,
     };
+  }
+
+  sinkingStart(){
+    this.sinking = true;
+    this.tableTimer = millis();
+    
   }
 
   displayVeronica() {
@@ -247,5 +255,25 @@ export default class Character {
       this.collisionRedbull = false;
       powerup.isVisible = false;
     }
+  }
+  sinkingTable(table){
+    let characterBox = this.createBoundingBox();
+    let tableBox = {
+      left: table.position.x,
+      right: table.position.x + this.size * table.data[0].length,
+      top: table.position.y,
+      bottom: table.position.y + this.size * table.data.length,
+    };
+    if (
+      characterBox.left < tableBox.right &&
+      characterBox.right > tableBox.left &&
+      characterBox.top < tableBox.bottom &&
+      characterBox.bottom > tableBox.top 
+    ) {
+      sinkingStart();
+    }
+    
+
+
   }
 }

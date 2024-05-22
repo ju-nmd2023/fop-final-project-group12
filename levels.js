@@ -361,6 +361,10 @@ function drawLevel3() {
     ene.collidePlatforms(platform)
   );
 
+  if (this.sinking && millis() - this.tableTimer > 2000){
+    platformsLevel3.splice(0);
+  }
+
   if (
     (collideWithCoffee && !collisionPlatforms) ||
     collisionObstacles ||
@@ -382,7 +386,7 @@ function draw() {
     gameStart = false;
     gameIsOver = false;
     if (currentLevel === 1) {
-      drawLevel1();
+      drawLevel3();
     } else if (currentLevel === 2) {
       drawLevel2();
     } else if (currentLevel === 3) {
